@@ -2,6 +2,7 @@
 import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import Figure from "@/components/ui/Figure.astro";
 import SectionLabel from "@/components/ui/SectionLabel.astro";
+import { skinkoImages } from "@/data/skinko/assets";
 import type { ArtExperience } from "@/schemas/skinko";
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { experiences } = Astro.props;
+const assets = [skinkoImages.livingSculptures, skinkoImages.becomeTheArtist, skinkoImages.masterpiece];
 ---
 
 <section id="art-of-skin" class="art-of-skin" aria-labelledby="art-of-skin-title">
@@ -38,6 +40,7 @@ const { experiences } = Astro.props;
             title={experience.name}
             ratio={experience.ratio}
             caption={experience.description}
+            asset={assets[position]}
           />
         </div>
       ))

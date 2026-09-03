@@ -1,15 +1,8 @@
 ---
-import type { GesEvidence } from "@/schemas/skinko";
-
-interface Asset {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
+import type { GesEvidence, ResponsiveImage } from "@/schemas/skinko";
 
 interface Props extends GesEvidence {
-  asset?: Asset;
+  asset?: ResponsiveImage;
 }
 
 const { index, title, ratio, caption, asset } = Astro.props;
@@ -20,12 +13,14 @@ const ratios: Record<GesEvidence["ratio"], string> = {
 };
 ---
 
-<figure class="evidence" style={`--evidence-ratio: ${ratios[ratio]}`}>
+<figure class="evidence" style={`--evidence-ratio: ${ratios[ratio]}; --image-position: ${asset?.objectPosition ?? "50% 50%"}; --image-position-desktop: ${asset?.objectPositionDesktop ?? asset?.objectPosition ?? "50% 50%"}`}>
   <div class="evidence__frame">
     {
       asset ? (
         <img
           src={asset.src}
+          srcset={asset.srcset}
+          sizes={asset.sizes}
           alt={asset.alt}
           width={asset.width}
           height={asset.height}
@@ -47,7 +42,7 @@ const ratios: Record<GesEvidence["ratio"], string> = {
     <span>
       <strong>{title}</strong>
       <span>{caption}</span>
-      <span>Case in progress · real evidence pending</span>
+      <span>{asset?.statusLabel ?? "Case in progress · real evidence pending"}</span>
     </span>
   </figcaption>
 </figure>
@@ -93,6 +88,11 @@ const ratios: Record<GesEvidence["ratio"], string> = {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: var(--image-position);
+  }
+
+  @media (min-width: 48rem) {
+    img { object-position: var(--image-position-desktop); }
   }
 
   .evidence__pending {

@@ -4,8 +4,10 @@ import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import SectionLabel from "@/components/ui/SectionLabel.astro";
 import StatusBadge from "@/components/ui/StatusBadge.astro";
 import { gesCase } from "@/data/skinko/ges-case";
+import { gesImages } from "@/data/skinko/assets";
 
 const { status, data } = gesCase;
+const evidenceAssets = [gesImages.landing, gesImages.flow, gesImages.communication];
 ---
 
 <section
@@ -39,7 +41,7 @@ const { status, data } = gesCase;
   </div>
 
   <div class="ges-case__evidence">
-    {data.evidence.map((evidence) => <EvidenceItem {...evidence} />)}
+    {data.evidence.map((evidence, index) => <EvidenceItem {...evidence} asset={evidenceAssets[index]} />)}
   </div>
 
   <div class="ges-case__workstreams">

@@ -12,6 +12,18 @@ export interface StatusedContent<T> {
   data: T;
 }
 
+export interface ResponsiveImage {
+  src: string;
+  srcset: string;
+  sizes: string;
+  alt: string;
+  width: number;
+  height: number;
+  objectPosition?: string;
+  objectPositionDesktop?: string;
+  statusLabel?: string;
+}
+
 export interface Transformation {
   from: string;
   to: string;

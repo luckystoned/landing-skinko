@@ -1,19 +1,13 @@
 ---
+import type { ResponsiveImage } from "@/schemas/skinko";
 type FigureRatio = "4:5" | "3:2" | "16:9";
-
-interface Asset {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
 
 interface Props {
   index: string;
   title: string;
   ratio: FigureRatio;
   caption?: string;
-  asset?: Asset;
+  asset?: ResponsiveImage;
   priority?: boolean;
 }
 
@@ -25,12 +19,14 @@ const ratios: Record<FigureRatio, string> = {
 };
 ---
 
-<figure class="asset-figure" style={`--figure-ratio: ${ratios[ratio]}`}>
+<figure class="asset-figure" style={`--figure-ratio: ${ratios[ratio]}; --image-position: ${asset?.objectPosition ?? "50% 50%"}; --image-position-desktop: ${asset?.objectPositionDesktop ?? asset?.objectPosition ?? "50% 50%"}`}>
   <div class="asset-figure__frame">
     {
       asset ? (
         <img
           src={asset.src}
+          srcset={asset.srcset}
+          sizes={asset.sizes}
           alt={asset.alt}
           width={asset.width}
           height={asset.height}
@@ -88,6 +84,11 @@ const ratios: Record<FigureRatio, string> = {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: var(--image-position);
+  }
+
+  @media (min-width: 48rem) {
+    img { object-position: var(--image-position-desktop); }
   }
 
   .asset-figure__pending {

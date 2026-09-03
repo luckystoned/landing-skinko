@@ -1,6 +1,7 @@
 ---
 import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import Figure from "@/components/ui/Figure.astro";
+import { skinkoImages } from "@/data/skinko/assets";
 
 interface Props {
   territory: {
@@ -38,7 +39,9 @@ const { territory, prize } = Astro.props;
       index="00"
       title="The Art of Skin — master visual"
       ratio="4:5"
-      caption="Master oficial pendiente · composición preparada para fotografía vertical."
+      caption="Visual conceptual provisto · composición preparada para fotografía vertical."
+      asset={skinkoImages.hero}
+      priority
     />
   </div>
 
