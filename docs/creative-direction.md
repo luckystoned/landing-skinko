@@ -4,14 +4,15 @@ Estado del sistema: **PROPOSED**, pendiente de aprobación visual antes del Chec
 
 ## Concepto rector
 
-**A living exhibition dossier: classical frame, contemporary surface, operational core.**
+**A living exhibition dossier: classical frame, contemporary surface, pop beauty energy, operational core.**
 
-La landing se comporta como un dossier expositivo vivo. Su marco toma precisión y pausa del catálogo cultural; su superficie toma luz, piel, vidrio y metal del universo beauty; su núcleo revela la operación real que vuelve posible un premio. La tensión no se resuelve decorando con chrome: se construye enfrentando arquitectura clásica y superficies contemporáneas, contemplación y sistema, promesa y evidencia.
+La landing se comporta como un dossier expositivo vivo. Su marco toma precisión y pausa del catálogo cultural; su superficie toma luz, piel, vidrio y metal del universo beauty; la energía pop conserva la cercanía joven, expresiva y trend-aware de Skinko; su núcleo revela la operación real que vuelve posible un premio. La tensión no se resuelve decorando con chrome: se construye enfrentando arquitectura clásica y superficies contemporáneas, contemplación y sistema, promesa y evidencia.
 
 ## Carácter
 
 - Premium por edición y detalle, no por ornamentación.
-- Cultural sin volverse académico o solemne.
+- Cultural sin volverse académico, solemne o institucionalmente distante.
+- Joven y expresivo sin copiar los códigos ecommerce de Skinko.
 - Contemporáneo sin códigos crypto o tech-demo.
 - Específico para Skinko sin copiar su ecommerce.
 - Cinematográfico en presentación guiada y completo en lectura autónoma.

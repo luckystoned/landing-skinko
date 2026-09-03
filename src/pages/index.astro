@@ -25,13 +25,28 @@ const schema = buildWebPageSchema({
 ---
 
 <BaseLayout metadata={homeMetadata} schema={schema}>
-  <main id="content" class="mx-auto w-[calc(100%-2rem)] max-w-content">
-    <Hero />
-    <ArtOfSkin />
-    <Opportunity status={proposal.opportunity.status} />
-    <PremioConcept status={proposal.prize.status} />
-    <Possibilities status={proposal.possibilities.status} />
-    <Journey status={proposal.journey.status} />
+  <main id="content" class="mx-auto max-w-content">
+    <Hero
+      territory={proposal.brandTerritory.data}
+      prize={proposal.prize.data}
+    />
+    <ArtOfSkin experiences={proposal.artExperiences.data} />
+    <Opportunity
+      status={proposal.opportunity.status}
+      transformations={proposal.opportunity.data}
+    />
+    <PremioConcept
+      status={proposal.prize.status}
+      concept={proposal.prize.data}
+    />
+    <Possibilities
+      status={proposal.possibilities.status}
+      applications={proposal.possibilities.data}
+    />
+    <Journey
+      status={proposal.journey.status}
+      phases={proposal.journey.data}
+    />
     <CulturalConnection status={proposal.culturalConnection.status} />
     <HiddenSystem />
     <GesCaseStudy />

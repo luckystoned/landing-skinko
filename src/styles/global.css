@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url("/fonts/instrument-serif-latin-400.woff2") format("woff2");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: optional;
+  src: url("/fonts/inter-latin-400-600.woff2") format("woff2");
+}
+
 :root {
   color-scheme: light;
 
@@ -14,10 +36,10 @@
   --color-accent: #665683;
   --color-on-dark: #f8f7f3;
 
-  --font-display: Georgia, "Times New Roman", ui-serif, serif;
-  --font-editorial: Georgia, "Times New Roman", ui-serif, serif;
-  --font-body: "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
-  --font-utility: Arial, ui-sans-serif, sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", ui-serif, serif;
+  --font-editorial: "Instrument Serif", Georgia, "Times New Roman", ui-serif, serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
+  --font-utility: "Inter", Arial, ui-sans-serif, sans-serif;
 
   --text-display-xl: clamp(3.75rem, 12vw, 10rem);
   --text-display-lg: clamp(3rem, 8vw, 7.5rem);

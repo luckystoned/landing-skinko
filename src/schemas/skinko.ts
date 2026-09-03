@@ -17,13 +17,34 @@ export interface Transformation {
   to: string;
 }
 
+export interface ArtExperience {
+  index: string;
+  name: string;
+  description: string;
+  ratio: "4:5" | "3:2" | "16:9";
+}
+
+export interface PrizeConcept {
+  name: string;
+  summary: string;
+  development: string;
+  disciplines: string[];
+  collaborators: string[];
+}
+
+export interface ProposedApplication {
+  index: string;
+  name: string;
+  ratio: "1:1" | "3:4" | "4:5" | "16:9";
+}
+
 export interface JourneyPhase {
   phase: number;
   label: string;
+  description: string;
 }
 
 export interface ProposedMilestone {
   period: string;
   focus: string;
 }
-

@@ -1,0 +1,41 @@
+---
+interface Props {
+  index: string;
+  label: string;
+  inverse?: boolean;
+}
+
+const { index, label, inverse = false } = Astro.props;
+---
+
+<p class:list={["section-label", { "section-label--inverse": inverse }]}>
+  <span aria-hidden="true">{index}</span>
+  <span>{label}</span>
+</p>
+
+<style>
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+
+  .section-label > span:first-child {
+    min-width: 2rem;
+    padding-block-end: 0.2rem;
+    border-block-end: 1px solid currentColor;
+  }
+
+  .section-label--inverse {
+    color: color-mix(in srgb, var(--color-on-dark) 68%, transparent);
+  }
+</style>
+

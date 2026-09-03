@@ -1,10 +1,10 @@
 # Design system preliminar
 
-Estado: **PROPOSED**. Los tokens técnicos están implementados para habilitar composición; fuentes, accent y aplicaciones visuales requieren aprobación antes del Checkpoint 3.
+Estado: **PROPOSED**. Los tokens técnicos están implementados. Instrument Serif + Inter se prueban en el primer capítulo; el accent permanece experimental y las aplicaciones visuales continúan sujetas a revisión.
 
 ## Concepto visual
 
-**A living exhibition dossier: classical frame, contemporary surface, operational core.**
+**A living exhibition dossier: classical frame, contemporary surface, pop beauty energy, operational core.**
 
 El sistema combina una estructura editorial precisa con superficies de beauty y un registro documental. El marco clásico aparece en proporción, serif, eje y pausa; lo contemporáneo aparece en escala, crop, fotografía, reflejo y montaje. El núcleo operativo aparece en índices, captions, líneas y documentos reales.
 
@@ -25,12 +25,14 @@ No usar gradientes para “fabricar” chrome. La materialidad metálica depende
 
 ## Tipografía
 
-### Roles actuales sin descarga
+### Roles actuales
 
-- `DISPLAY`: Georgia → Times New Roman → serif. Titulares conceptuales y números de gran escala.
-- `EDITORIAL`: misma familia serif durante el prototipo para evitar carga adicional; citas o statements.
-- `BODY`: Helvetica Neue → Arial → sans-serif. Argumento en español.
-- `UTILITY`: Arial → sans-serif. Eyebrows, captions, estados e índices.
+- `DISPLAY`: Instrument Serif 400 → Georgia → Times New Roman. Titulares conceptuales y números de gran escala.
+- `EDITORIAL`: Instrument Serif 400 con los mismos fallbacks; citas o statements.
+- `BODY`: Inter variable 400–600 → Helvetica Neue → Arial. Argumento en español.
+- `UTILITY`: Inter variable 400–600 → Arial. Eyebrows, captions, estados e índices.
+
+Los WOFF2 latinos se self-hosteán desde Google Fonts: 15 KB para Instrument Serif y 48 KB para Inter. Ambos usan `font-display: optional` para evitar un swap tardío que provoque layout shift. Las licencias SIL OFL se conservan en `public/fonts/`; no se agregó preload antes de medir el LCP real.
 
 ### Familias candidatas
 
@@ -40,7 +42,7 @@ No usar gradientes para “fabricar” chrome. La materialidad metálica depende
 | Suisse Works + Suisse Int’l | Editorial/display + body/utility | Familia comercial de [Swiss Typefaces](https://www.swisstypefaces.com/fonts/suisse/); admite self-hosting según licencia. | Works Regular/Book; Int’l Regular/Medium | Sistema coherente, cultural y extremadamente preciso. Mayor costo y menor contraste expresivo. |
 | Instrument Serif + Inter | Display + body/utility | Ambas bajo SIL OFL; [Instrument Serif](https://github.com/Instrument/instrument-serif) e [Inter](https://rsms.me/inter/) pueden self-hostearse. | Instrument Regular; Inter 400/500/600 | Alternativa gratuita de bajo riesgo, expresiva en titulares y robusta en lectura. |
 
-Recomendación preliminar: probar **Canela + sans del sistema** y **Instrument Serif + Inter** con copy real antes de licenciar. Cargar únicamente WOFF2 y los pesos usados.
+Decisión del Checkpoint 3: probar **Instrument Serif + Inter** con copy real. Canela y Suisse quedan como alternativas, no se descargaron.
 
 ## Type scale
 
@@ -136,4 +138,3 @@ La estrategia detallada está en [component-strategy.md](./component-strategy.md
 - Usar serif display en párrafos largos.
 - Ocultar información imprescindible tras hover, reveal o desktop-only.
 - Introducir fuentes, scripts o librerías sin aprobación y medición.
-

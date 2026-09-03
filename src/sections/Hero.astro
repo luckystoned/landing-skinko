@@ -1,6 +1,245 @@
-<header aria-labelledby="hero-title">
-  <p>SKINKO — THE ART OF SKIN</p>
-  <h1 id="hero-title">Premio Skinko a las Artes 2027</h1>
-  <p>Presentación comercial privada · Checkpoint de arquitectura</p>
-</header>
+---
+import EditorialHeading from "@/components/ui/EditorialHeading.astro";
+import Figure from "@/components/ui/Figure.astro";
 
+interface Props {
+  territory: {
+    name: string;
+    statement: string;
+    signature: string;
+    question: string;
+  };
+  prize: {
+    name: string;
+    summary: string;
+  };
+}
+
+const { territory, prize } = Astro.props;
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__meta">
+    <p>{territory.signature}</p>
+    <p>Private proposal · 2027</p>
+  </div>
+
+  <div class="hero__title">
+    <p class="hero__eyebrow">{territory.name.split(" — ")[0]}</p>
+    <EditorialHeading id="hero-title" level="h1" size="display-xl">
+      <span>The Art</span>
+      <span>of Skin</span>
+    </EditorialHeading>
+    <p class="hero__statement">{territory.statement}</p>
+  </div>
+
+  <div class="hero__visual">
+    <Figure
+      index="00"
+      title="The Art of Skin — master visual"
+      ratio="4:5"
+      caption="Master oficial pendiente · composición preparada para fotografía vertical."
+    />
+  </div>
+
+  <div class="hero__opening">
+    <p>{territory.question}</p>
+  </div>
+
+  <div class="hero__prize" aria-label="Propuesta a desarrollar en el próximo capítulo">
+    <span>Next</span>
+    <p>{prize.name}</p>
+    <strong>2027</strong>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem 0.75rem;
+    min-height: min(56rem, 100svh);
+    padding: 1.25rem var(--space-gutter) clamp(4rem, 8vw, 7rem);
+    border-block-end: 0;
+  }
+
+  .hero__meta {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    align-self: start;
+    padding-block-end: 0.75rem;
+    border-block-end: 1px solid var(--color-fg-primary);
+  }
+
+  .hero__meta p,
+  .hero__eyebrow,
+  .hero__prize span {
+    margin: 0;
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero__meta p:last-child {
+    color: var(--color-fg-muted);
+    text-align: end;
+  }
+
+  .hero__title {
+    z-index: 1;
+    grid-column: 1 / -1;
+    align-self: center;
+    padding-block: clamp(1rem, 6vw, 4rem);
+  }
+
+  .hero__eyebrow {
+    margin-block-end: 1rem;
+  }
+
+  .hero__title :global(.editorial-heading) span {
+    display: block;
+  }
+
+  .hero__title :global(.editorial-heading) span:last-child {
+    padding-inline-start: clamp(1.5rem, 10vw, 8rem);
+  }
+
+  .hero__statement {
+    margin: 1.25rem 0 0 auto;
+    max-width: 15rem;
+    font-family: var(--font-editorial);
+    font-size: var(--text-body-lg);
+    font-style: italic;
+    text-align: end;
+  }
+
+  .hero__visual {
+    grid-column: 2 / -1;
+  }
+
+  .hero__opening {
+    grid-column: 1 / -1;
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .hero__opening p {
+    max-width: 18ch;
+    margin: 0;
+    font-family: var(--font-editorial);
+    font-size: clamp(1.75rem, 5vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__prize {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 0.75rem;
+    align-items: end;
+    margin-block-start: 1rem;
+    padding-block: 0.875rem;
+    border-block: 1px solid var(--color-fg-primary);
+  }
+
+  .hero__prize p,
+  .hero__prize strong {
+    margin: 0;
+    font-size: var(--text-caption);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero__prize strong {
+    font-weight: 500;
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      column-gap: 1rem;
+      min-height: 58rem;
+      padding-block-start: 1.5rem;
+    }
+
+    .hero__title {
+      grid-column: 1 / 7;
+      grid-row: 2;
+    }
+
+    .hero__visual {
+      grid-column: 5 / -1;
+      grid-row: 2 / 4;
+      align-self: end;
+      margin-inline-end: calc(var(--space-gutter) * -1);
+    }
+
+    .hero__opening {
+      z-index: 1;
+      grid-column: 1 / 5;
+      grid-row: 3;
+      align-self: end;
+      border-block-start-color: var(--color-fg-primary);
+    }
+
+    .hero__prize {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 1.25rem;
+      min-height: min(62rem, 100svh);
+    }
+
+    .hero__title {
+      grid-column: 1 / 8;
+    }
+
+    .hero__visual {
+      grid-column: 8 / -1;
+      max-height: 38rem;
+      overflow: hidden;
+    }
+
+    .hero__opening {
+      grid-column: 1 / 6;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__meta,
+    .hero__title,
+    .hero__visual,
+    .hero__opening,
+    .hero__prize {
+      animation: hero-enter 700ms both cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hero__title { animation-delay: 80ms; }
+    .hero__visual { animation-delay: 160ms; }
+    .hero__opening { animation-delay: 240ms; }
+    .hero__prize { animation-delay: 320ms; }
+
+    @keyframes hero-enter {
+      from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+</style>

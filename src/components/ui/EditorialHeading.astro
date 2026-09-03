@@ -1,0 +1,58 @@
+---
+interface Props {
+  id?: string;
+  level?: "h1" | "h2" | "h3";
+  size?: "display-xl" | "display-lg" | "h1" | "h2" | "h3";
+}
+
+const {
+  id,
+  level: Tag = "h2",
+  size = Tag === "h1" ? "display-xl" : "h2",
+} = Astro.props;
+---
+
+<Tag {id} class:list={["editorial-heading", `editorial-heading--${size}`]}>
+  <slot />
+</Tag>
+
+<style>
+  .editorial-heading {
+    max-width: none;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  .editorial-heading--display-xl {
+    font-size: var(--text-display-xl);
+    line-height: 0.84;
+    letter-spacing: -0.045em;
+  }
+
+  .editorial-heading--display-lg {
+    font-size: var(--text-display-lg);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .editorial-heading--h1 {
+    font-size: var(--text-h1);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+  }
+
+  .editorial-heading--h2 {
+    font-size: var(--text-h2);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+
+  .editorial-heading--h3 {
+    font-size: var(--text-h3);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+</style>
+
