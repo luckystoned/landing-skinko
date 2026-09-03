@@ -47,8 +47,11 @@ const schema = buildWebPageSchema({
       status={proposal.journey.status}
       phases={proposal.journey.data}
     />
-    <CulturalConnection status={proposal.culturalConnection.status} />
-    <HiddenSystem />
+    <CulturalConnection
+      status={proposal.culturalConnection.status}
+      connection={proposal.culturalConnection.data}
+    />
+    <HiddenSystem system={proposal.hiddenSystem.data} />
     <GesCaseStudy />
     <BandadasValue />
     <Roadmap status={proposal.roadmap.status} />

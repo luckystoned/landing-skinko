@@ -1,5 +1,325 @@
 ---
-import SectionPlaceholder from "@/components/common/SectionPlaceholder.astro";
----
-<SectionPlaceholder id="hidden-system" title="The Hidden System" />
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import type { HiddenSystemContent } from "@/schemas/skinko";
 
+interface Props {
+  system: HiddenSystemContent;
+}
+
+const { system } = Astro.props;
+const startTransforms = [
+  ["220%", "62%"],
+  ["110%", "62%"],
+  ["0%", "62%"],
+  ["-110%", "62%"],
+  ["-220%", "62%"],
+  ["220%", "-62%"],
+  ["110%", "-62%"],
+  ["0%", "-62%"],
+  ["-110%", "-62%"],
+  ["-220%", "-62%"],
+] as const;
+---
+
+<section id="hidden-system" class="hidden-system" aria-labelledby="hidden-title">
+  <div class="hidden-system__stage">
+    <header class="hidden-system__header">
+      <SectionLabel index="08" label="The Hidden System" inverse />
+      <p>Exploded museum archive · operational record</p>
+    </header>
+
+    <div class="hidden-system__archive">
+      <div class="hidden-system__surface">
+        <span>Archive record · 00</span>
+        <h2 id="hidden-title">{system.surface}</h2>
+        <span>Apparently simple</span>
+      </div>
+
+      <ol class="hidden-system__layers">
+        {
+          system.layers.map((layer, index) => (
+            <li style={`--layer-x: ${startTransforms[index][0]}; --layer-y: ${startTransforms[index][1]}`}>
+              <span>{layer.index}</span>
+              <strong>{layer.label}</strong>
+              <span>{layer.action}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="hidden-system__reveal">
+      <p>{system.statement}</p>
+      <strong>{system.closing}</strong>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hidden-system {
+    padding-inline: var(--space-gutter);
+    color: var(--color-on-dark);
+    background: var(--color-fg-primary);
+  }
+
+  .hidden-system__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block-end: clamp(3rem, 8vw, 6rem);
+  }
+
+  .hidden-system__header > p {
+    margin: 0;
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-align: end;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-on-dark) 58%, transparent);
+  }
+
+  .hidden-system__archive {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .hidden-system__surface {
+    display: grid;
+    gap: 2rem;
+    min-height: 20rem;
+    padding: 1rem;
+    border: 1px solid var(--color-on-dark);
+    background:
+      linear-gradient(color-mix(in srgb, var(--color-on-dark) 16%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-on-dark) 16%, transparent) 1px, transparent 1px),
+      var(--color-fg-primary);
+    background-size: 2.5rem 2.5rem;
+  }
+
+  .hidden-system__surface span,
+  .hidden-system__layers span,
+  .hidden-system__layers strong,
+  .hidden-system__reveal strong {
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .hidden-system__surface span:last-child {
+    align-self: end;
+    color: color-mix(in srgb, var(--color-on-dark) 58%, transparent);
+  }
+
+  .hidden-system__surface h2 {
+    align-self: center;
+    max-width: 8ch;
+    margin: 0;
+    font-size: clamp(4rem, 17vw, 8rem);
+    line-height: 0.78;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+  }
+
+  .hidden-system__layers {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hidden-system__layers li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.75rem;
+    min-height: 8.5rem;
+    padding: 0.875rem;
+    border: 1px solid color-mix(in srgb, var(--color-on-dark) 36%, transparent);
+    background: var(--color-fg-primary);
+  }
+
+  .hidden-system__layers strong {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+  }
+
+  .hidden-system__layers span:last-child {
+    grid-column: 2;
+    align-self: end;
+    color: color-mix(in srgb, var(--color-on-dark) 58%, transparent);
+    text-transform: none;
+  }
+
+  .hidden-system__reveal {
+    display: grid;
+    gap: 2rem;
+    margin-block-start: clamp(4rem, 10vw, 8rem);
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid var(--color-on-dark);
+  }
+
+  .hidden-system__reveal p {
+    max-width: 13ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 9vw, 7.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .hidden-system__reveal strong {
+    justify-self: end;
+  }
+
+  @media (min-width: 48rem) {
+    .hidden-system__layers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hidden-system__reveal {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    }
+
+    .hidden-system__reveal strong {
+      align-self: end;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hidden-system__layers {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .hidden-system__surface {
+      width: min(32rem, 38vw);
+      margin-inline: auto;
+    }
+  }
+
+  @media (min-width: 64rem) and (min-height: 42rem) and (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .hidden-system {
+        height: 230svh;
+        padding: 0;
+        view-timeline-name: --hidden-system;
+        view-timeline-axis: block;
+      }
+
+      .hidden-system__stage {
+        position: sticky;
+        top: 0;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        height: 100svh;
+        overflow: hidden;
+        padding: clamp(1.5rem, 4vh, 3rem) var(--space-gutter);
+      }
+
+      .hidden-system__header {
+        margin-block-end: 1rem;
+      }
+
+      .hidden-system__archive {
+        position: relative;
+        display: block;
+        min-height: 0;
+      }
+
+      .hidden-system__surface {
+        position: absolute;
+        z-index: 2;
+        inset: 50% auto auto 50%;
+        width: min(31rem, 38vw);
+        min-height: min(24rem, 46svh);
+        margin: 0;
+        transform: translate(-50%, -50%);
+        animation: archive-surface linear both;
+        animation-timeline: --hidden-system;
+        animation-range: cover 30% cover 58%;
+      }
+
+      .hidden-system__surface h2 {
+        font-size: clamp(4.5rem, 7vw, 7rem);
+      }
+
+      .hidden-system__layers {
+        position: absolute;
+        inset: 0;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .hidden-system__layers li {
+        min-height: 0;
+        opacity: 0;
+        transform: translate(var(--layer-x), var(--layer-y)) scale(0.72);
+        animation: archive-layer linear both;
+        animation-timeline: --hidden-system;
+        animation-range: cover 31% cover 54%;
+      }
+
+      .hidden-system__layers li:nth-child(n + 4) {
+        animation-range: cover 34% cover 58%;
+      }
+
+      .hidden-system__layers li:nth-child(n + 8) {
+        animation-range: cover 38% cover 63%;
+      }
+
+      .hidden-system__reveal {
+        z-index: 3;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+        gap: 2rem;
+        margin: 1rem 0 0;
+        padding-block-start: 0.8rem;
+        opacity: 0;
+        animation: archive-reveal linear both;
+        animation-timeline: --hidden-system;
+        animation-range: cover 52% cover 68%;
+      }
+
+      .hidden-system__reveal p {
+        font-size: clamp(2rem, 4vw, 4.5rem);
+      }
+
+      @keyframes archive-surface {
+        from {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        to {
+          opacity: 0.14;
+          transform: translate(-50%, -50%) scale(0.7);
+        }
+      }
+
+      @keyframes archive-layer {
+        from {
+          opacity: 0;
+          transform: translate(var(--layer-x), var(--layer-y)) scale(0.72);
+        }
+        to {
+          opacity: 1;
+          transform: translate(0, 0) scale(1);
+        }
+      }
+
+      @keyframes archive-reveal {
+        from {
+          opacity: 0;
+          transform: translateY(1rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+</style>

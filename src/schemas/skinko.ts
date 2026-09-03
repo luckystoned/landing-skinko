@@ -45,6 +45,56 @@ export interface JourneyPhase {
   description: string;
 }
 
+export interface CulturalConnectionContent {
+  institution: string;
+  label: string;
+  actors: string[];
+  statement: string;
+  proposal: string;
+  possibleRoles: string[];
+}
+
+export interface SystemLayer {
+  index: string;
+  label: string;
+  action: string;
+}
+
+export interface HiddenSystemContent {
+  surface: string;
+  layers: SystemLayer[];
+  statement: string;
+  closing: string;
+}
+
+export interface GesWorkstream {
+  index: string;
+  label: string;
+  details: string[];
+}
+
+export interface GesFact {
+  value: string;
+  label: string;
+}
+
+export interface GesEvidence {
+  index: string;
+  title: string;
+  ratio: "4:5" | "4:3" | "16:10";
+  caption: string;
+}
+
+export interface GesCaseContent {
+  name: string;
+  headline: string;
+  summary: string;
+  workstreams: GesWorkstream[];
+  verifiedFacts: GesFact[];
+  evidence: GesEvidence[];
+  progressNote: string;
+}
+
 export interface ProposedMilestone {
   period: string;
   focus: string;

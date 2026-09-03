@@ -11,7 +11,7 @@ Estado: **IN USE**. El sistema se mantiene deliberadamente pequeño y orientado 
 | `StatusBadge` | Estado editorial contextual | Partnership, GES, roadmap | Ya existe; refinar labels, no convertir en chip. |
 | `Figure` | Imagen/picture, ratio, alt, caption, crédito y estado de permiso | Art of Skin, Hero y evidencia futura | Implementado; admite placeholder y asset real. |
 | `PhaseLabel` | Número, nombre y copy corto de fase | Siete pasos de Journey y posible Roadmap | Implementado para mantener semántica y lectura consistente. |
-| `EvidenceItem` | Figure o documento + caption + hecho verificable | GES | Crear después de auditar los assets reales. |
+| `EvidenceItem` | Figure documental con placeholder o asset real, caption y estado | GES | Implementado para las tres evidencias priorizadas. |
 
 ## Mantener dentro de la sección
 

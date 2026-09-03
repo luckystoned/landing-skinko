@@ -1,8 +1,305 @@
 ---
-import SectionPlaceholder from "@/components/common/SectionPlaceholder.astro";
-import type { ContentStatus } from "@/schemas/skinko";
-interface Props { status: ContentStatus }
-const { status } = Astro.props;
----
-<SectionPlaceholder id="cultural-connection" title="Cultural Connection" {status} statusLabel="Proposed partnership" />
+import EditorialHeading from "@/components/ui/EditorialHeading.astro";
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import StatusBadge from "@/components/ui/StatusBadge.astro";
+import type {
+  ContentStatus,
+  CulturalConnectionContent,
+} from "@/schemas/skinko";
 
+interface Props {
+  status: ContentStatus;
+  connection: CulturalConnectionContent;
+}
+
+const { status, connection } = Astro.props;
+---
+
+<section
+  id="cultural-connection"
+  class="cultural"
+  aria-labelledby="cultural-title"
+  data-status={status}
+>
+  <header class="cultural__header">
+    <SectionLabel index="07" label="Cultural Connection" />
+    <StatusBadge {status} label={connection.label} />
+  </header>
+
+  <EditorialHeading id="cultural-title" level="h2" size="display-lg">
+    Culture adds context.
+  </EditorialHeading>
+
+  <ul class="cultural__actors" aria-label="Actores de una posible conexión cultural">
+    {connection.actors.map((actor) => <li>{actor}</li>)}
+  </ul>
+
+  <div class="cultural__copy">
+    <p>{connection.statement}</p>
+    <p>{connection.proposal}</p>
+  </div>
+
+  <figure class="cultural__figure">
+    <div class="cultural__placeholder" aria-hidden="true">
+      <span>Institutional image</span>
+      <strong>{connection.institution}</strong>
+      <span>Asset pending</span>
+      <span>{connection.label}</span>
+    </div>
+    <figcaption>
+      <span>Potential frame</span>
+      <strong>{connection.institution}</strong>
+      <span>Exploratory proposal. No agreement or venue is confirmed.</span>
+    </figcaption>
+  </figure>
+
+  <div class="cultural__roles">
+    <p>Possible roles</p>
+    <ul>
+      {connection.possibleRoles.map((role) => <li>{role}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cultural {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(3rem, 8vw, 7rem) 0.75rem;
+    padding-inline: var(--space-gutter);
+    background: var(--color-bg-secondary);
+  }
+
+  .cultural__header {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .cultural__header :global(.status-badge) {
+    margin: 0;
+    text-align: end;
+  }
+
+  .cultural :global(.editorial-heading) {
+    grid-column: 1 / -1;
+    max-width: 9ch;
+    text-transform: uppercase;
+  }
+
+  .cultural__actors {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border-block: 1px solid var(--color-fg-primary);
+    list-style: none;
+  }
+
+  .cultural__actors li {
+    min-width: 0;
+    padding-block: 0.8rem;
+    border-block-end: 1px solid var(--color-border);
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 9vw, 6rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .cultural__actors li:last-child {
+    border-block-end: 0;
+  }
+
+  .cultural__actors li:not(:last-child)::after {
+    float: inline-end;
+    content: "×";
+    color: var(--color-metal);
+  }
+
+  .cultural__copy {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 1.5rem;
+  }
+
+  .cultural__copy p {
+    margin: 0;
+  }
+
+  .cultural__copy p:first-child {
+    font-family: var(--font-editorial);
+    font-size: clamp(1.75rem, 4vw, 3.25rem);
+    line-height: 1.04;
+  }
+
+  .cultural__figure {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .cultural__placeholder {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    aspect-ratio: 3 / 2;
+    padding: clamp(1rem, 3vw, 2rem);
+    border: 1px solid var(--color-border);
+    background:
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px),
+      var(--color-bg-primary);
+    background-size: 3rem 3rem;
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .cultural__placeholder strong {
+    align-self: center;
+    grid-column: 1 / -1;
+    max-width: 14ch;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 400;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+
+  .cultural__placeholder span:last-child {
+    text-align: end;
+  }
+
+  .cultural__figure figcaption {
+    display: grid;
+    gap: 0.25rem;
+    padding-block-start: 0.875rem;
+    font-family: var(--font-utility);
+    font-size: var(--text-caption);
+    line-height: 1.35;
+  }
+
+  .cultural__figure figcaption span:first-child,
+  .cultural__figure figcaption strong {
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .cultural__figure figcaption span:last-child {
+    color: var(--color-fg-muted);
+  }
+
+  .cultural__roles {
+    grid-column: 1 / -1;
+  }
+
+  .cultural__roles > p {
+    margin: 0 0 1rem;
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+
+  .cultural__roles ul {
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--color-fg-primary);
+    list-style: none;
+  }
+
+  .cultural__roles li {
+    padding-block: 0.75rem;
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 48rem) {
+    .cultural {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      column-gap: 1rem;
+    }
+
+    .cultural :global(.editorial-heading) {
+      grid-column: 1 / 7;
+    }
+
+    .cultural__actors {
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .cultural__actors li {
+      font-size: clamp(2.25rem, 5vw, 4.75rem);
+      padding-inline: 1rem;
+      border-inline-end: 1px solid var(--color-border);
+      border-block-end: 0;
+      text-align: center;
+    }
+
+    .cultural__actors li:first-child {
+      padding-inline-start: 0;
+      text-align: start;
+    }
+
+    .cultural__actors li:last-child {
+      padding-inline-end: 0;
+      border-inline-end: 0;
+      text-align: end;
+    }
+
+    .cultural__actors li:not(:last-child)::after {
+      float: none;
+      margin-inline-start: 0.3em;
+    }
+
+    .cultural__copy {
+      grid-column: 4 / -1;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 1rem;
+    }
+
+    .cultural__figure {
+      grid-column: 1 / 7;
+    }
+
+    .cultural__roles {
+      grid-column: 5 / -1;
+      align-self: end;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .cultural {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 1.25rem;
+    }
+
+    .cultural :global(.editorial-heading) {
+      grid-column: 2 / 9;
+    }
+
+    .cultural__copy {
+      grid-column: 6 / -1;
+    }
+
+    .cultural__figure {
+      grid-column: 1 / 8;
+    }
+
+    .cultural__roles {
+      grid-column: 9 / -1;
+    }
+
+    .cultural__actors li {
+      font-size: clamp(2.5rem, 4.6vw, 4.75rem);
+    }
+  }
+</style>

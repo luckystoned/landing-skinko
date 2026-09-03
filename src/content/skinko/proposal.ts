@@ -1,6 +1,8 @@
 import {
   contentStatuses,
   type ArtExperience,
+  type CulturalConnectionContent,
+  type HiddenSystemContent,
   type JourneyPhase,
   type PrizeConcept,
   type ProposedApplication,
@@ -119,8 +121,41 @@ export const proposal = {
     status: contentStatuses.proposed,
     data: {
       institution: "Museo Nacional de Arte Oriental",
-      label: "Proposed partnership",
-    },
+      label: "Potential cultural partnership",
+      actors: ["Brand", "Artists", "Institution"],
+      statement:
+        "El premio también podría conectar a SKINKO con instituciones y especialistas de la escena artística.",
+      proposal:
+        "Proponemos explorar una vinculación con el Museo Nacional de Arte Oriental como marco cultural para una de las instancias del premio.",
+      possibleRoles: [
+        "Marco cultural",
+        "Contexto institucional",
+        "Encuentro con especialistas",
+        "Posible instancia vinculada al jurado",
+        "Potencial sede de una instancia central",
+      ],
+    } satisfies CulturalConnectionContent,
+  },
+  hiddenSystem: {
+    status: contentStatuses.confirmed,
+    data: {
+      surface: "An open call",
+      layers: [
+        { index: "01", label: "Strategy", action: "Define el marco" },
+        { index: "02", label: "Legal", action: "Protege el proceso" },
+        { index: "03", label: "Technology", action: "Sostiene el flujo" },
+        { index: "04", label: "Communication", action: "Activa la convocatoria" },
+        { index: "05", label: "Artists", action: "Ordena la experiencia" },
+        { index: "06", label: "Support", action: "Acompaña cada caso" },
+        { index: "07", label: "Jury", action: "Coordina especialistas" },
+        { index: "08", label: "Evaluation", action: "Estructura criterios" },
+        { index: "09", label: "Production", action: "Materializa la obra" },
+        { index: "10", label: "Reporting", action: "Documenta decisiones" },
+      ],
+      statement:
+        "What looks like an open call is actually an operating system.",
+      closing: "Bandadas operates every layer.",
+    } satisfies HiddenSystemContent,
   },
   roadmap: {
     status: contentStatuses.proposed,

@@ -1,0 +1,157 @@
+---
+import type { GesEvidence } from "@/schemas/skinko";
+
+interface Asset {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface Props extends GesEvidence {
+  asset?: Asset;
+}
+
+const { index, title, ratio, caption, asset } = Astro.props;
+const ratios: Record<GesEvidence["ratio"], string> = {
+  "4:5": "4 / 5",
+  "4:3": "4 / 3",
+  "16:10": "16 / 10",
+};
+---
+
+<figure class="evidence" style={`--evidence-ratio: ${ratios[ratio]}`}>
+  <div class="evidence__frame">
+    {
+      asset ? (
+        <img
+          src={asset.src}
+          alt={asset.alt}
+          width={asset.width}
+          height={asset.height}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="evidence__pending" aria-hidden="true">
+          <span>EVIDENCE {index}</span>
+          <strong>{title}</strong>
+          <span>REAL ASSET PENDING</span>
+          <span>{ratio}</span>
+        </div>
+      )
+    }
+  </div>
+  <figcaption>
+    <span>{index}</span>
+    <span>
+      <strong>{title}</strong>
+      <span>{caption}</span>
+      <span>Case in progress · real evidence pending</span>
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .evidence {
+    margin: 0;
+  }
+
+  .evidence__frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: var(--evidence-ratio);
+    border: 1px solid currentColor;
+    background:
+      linear-gradient(color-mix(in srgb, currentColor 16%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, currentColor 16%, transparent) 1px, transparent 1px),
+      var(--color-bg-primary);
+    background-size: 2rem 2rem;
+  }
+
+  .evidence__frame::before,
+  .evidence__frame::after {
+    position: absolute;
+    content: "";
+    background: currentColor;
+    opacity: 0.2;
+  }
+
+  .evidence__frame::before {
+    inset: 50% 0 auto;
+    height: 1px;
+  }
+
+  .evidence__frame::after {
+    inset: 0 auto 0 50%;
+    width: 1px;
+  }
+
+  img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .evidence__pending {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    padding: clamp(1rem, 2vw, 1.75rem);
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .evidence__pending strong {
+    min-width: 0;
+    align-self: center;
+    grid-column: 1 / -1;
+    max-width: 12ch;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .evidence__pending span:last-child {
+    text-align: end;
+  }
+
+  figcaption {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.75rem;
+    padding-block-start: 0.875rem;
+    font-family: var(--font-utility);
+    font-size: var(--text-caption);
+    line-height: 1.35;
+  }
+
+  figcaption > span:last-child {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  figcaption strong,
+  figcaption span span:last-child {
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  figcaption span span:not(:last-child) {
+    color: var(--color-fg-muted);
+  }
+</style>
