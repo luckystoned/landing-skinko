@@ -34,4 +34,4 @@ Son piezas narrativas específicas; extraerlas a una biblioteca genérica oculta
 - Props pequeñas, tipadas y orientadas a contenido.
 - Variantes finitas; no props que acepten clases arbitrarias por defecto.
 - Semántica nativa y slot solo cuando exista una composición legítima.
-- El contenido vive en `src/content/skinko`, no en defaults del componente.
+- El contenido vive en `src/data/skinko`, no en defaults del componente.

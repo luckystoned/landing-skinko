@@ -1,5 +1,5 @@
 ---
-import { proposal } from "@/content/skinko/proposal";
+import { proposal } from "@/data/skinko/proposal";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { homeMetadata } from "@/seo/metadata";
 import { buildWebPageSchema } from "@/seo/schemas";
@@ -53,8 +53,8 @@ const schema = buildWebPageSchema({
     />
     <HiddenSystem system={proposal.hiddenSystem.data} />
     <GesCaseStudy />
-    <BandadasValue />
-    <Roadmap status={proposal.roadmap.status} />
-    <FinalCta />
+    <BandadasValue value={proposal.bandadasValue.data} />
+    <Roadmap status={proposal.roadmap.status} milestones={proposal.roadmap.data} />
+    <FinalCta closing={proposal.closing.data} />
   </main>
 </BaseLayout>

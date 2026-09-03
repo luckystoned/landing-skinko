@@ -98,4 +98,22 @@ export interface GesCaseContent {
 export interface ProposedMilestone {
   period: string;
   focus: string;
+  description: string;
+}
+
+export interface BandadasValueContent {
+  headline: string;
+  statement: string;
+  capabilities: string[];
+  process: string[];
+  closing: string;
+}
+
+export interface ClosingContent {
+  territory: string;
+  answer: string;
+  prize: string;
+  year: string;
+  signature: string;
+  invitation: string;
 }

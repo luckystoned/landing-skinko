@@ -1,5 +1,36 @@
 ---
-import SectionPlaceholder from "@/components/common/SectionPlaceholder.astro";
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import type { ClosingContent } from "@/schemas/skinko";
+interface Props { closing: ClosingContent }
+const { closing } = Astro.props;
 ---
-<SectionPlaceholder id="closing" title="Closing" />
 
+<section id="closing" class="closing" aria-labelledby="closing-title">
+  <header class="closing__header"><SectionLabel index="12" label="The Decision" inverse /><p>Private proposal · 2027</p></header>
+  <div class="closing__answer"><p>{closing.territory}</p><h2 id="closing-title">{closing.answer}</h2></div>
+  <div class="closing__prize"><p>{closing.prize}</p><strong>{closing.year}</strong></div>
+  <footer class="closing__footer"><p>{closing.signature}</p><p>{closing.invitation}</p></footer>
+</section>
+
+<style>
+  .closing { display: grid; grid-template-rows: auto 1fr auto auto; min-height: max(44rem, 100svh); padding: 1.25rem var(--space-gutter) clamp(2rem, 5vw, 4rem); border-block-end: 0; color: var(--color-on-dark); background: var(--color-fg-primary); }
+  .closing__header, .closing__footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .closing__header { padding-block-end: 0.75rem; border-block-end: 1px solid color-mix(in srgb, var(--color-on-dark) 40%, transparent); }
+  .closing__header > p, .closing__footer p, .closing__answer > p { margin: 0; font: 600 var(--text-eyebrow)/1.2 var(--font-utility); letter-spacing: 0.1em; text-transform: uppercase; }
+  .closing__header > p { text-align: end; color: color-mix(in srgb, var(--color-on-dark) 58%, transparent); }
+  .closing__answer { align-self: center; padding-block: clamp(4rem, 8vh, 6rem); }
+  .closing__answer > p { margin-block-end: 1.25rem; }
+  .closing__answer h2 { max-width: 10ch; margin: 0; font-size: clamp(3.5rem, 13vw, 10.5rem); line-height: 0.83; letter-spacing: -0.045em; text-transform: uppercase; }
+  .closing__prize { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: end; padding-block: 1rem; border-block: 1px solid var(--color-on-dark); }
+  .closing__prize p, .closing__prize strong { margin: 0; font: 400 clamp(1.75rem, 5vw, 4rem)/0.95 var(--font-display); text-transform: uppercase; }
+  .closing__prize strong { color: color-mix(in srgb, var(--color-on-dark) 55%, transparent); }
+  .closing__footer { align-items: end; padding-block-start: clamp(2rem, 5vw, 4rem); }
+  .closing__footer p:last-child { max-width: 7ch; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 400; line-height: 0.9; letter-spacing: -0.025em; text-align: end; }
+  @media (min-width: 48rem) {
+    .closing { min-height: max(48rem, 100svh); padding-block-start: 1.5rem; }
+    .closing__answer { padding-inline-start: clamp(4rem, 12vw, 12rem); }
+    .closing__answer h2 { font-size: clamp(5rem, 8vw, 8rem); }
+    .closing__footer { padding-block-start: 2rem; }
+    .closing__footer p:last-child { max-width: 11ch; font-size: clamp(2rem, 4vw, 4rem); }
+  }
+</style>

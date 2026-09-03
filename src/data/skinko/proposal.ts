@@ -1,6 +1,8 @@
 import {
   contentStatuses,
   type ArtExperience,
+  type BandadasValueContent,
+  type ClosingContent,
   type CulturalConnectionContent,
   type HiddenSystemContent,
   type JourneyPhase,
@@ -55,8 +57,8 @@ export const proposal = {
   prize: {
     status: contentStatuses.proposed,
     data: {
-      name: "Premio Skinko a las Artes 2027",
-      displayLines: ["Premio", "Skinko", "a las Artes", "2027"],
+      name: "Premio SKINKO a las Artes 2027",
+      displayLines: ["Premio", "SKINKO", "a las Artes", "2027"],
       summary:
         "Una convocatoria propuesta para seleccionar un/a artista que interprete el universo SKINKO.",
       development:
@@ -157,14 +159,42 @@ export const proposal = {
       closing: "Bandadas operates every layer.",
     } satisfies HiddenSystemContent,
   },
+  bandadasValue: {
+    status: contentStatuses.confirmed,
+    data: {
+      headline: "One partner. The whole process.",
+      statement:
+        "Bandadas reúne estrategia cultural, comunidad, tecnología y operación en un mismo proceso.",
+      capabilities: [
+        "Cultural strategy",
+        "Community",
+        "Technology",
+        "Operations",
+      ],
+      process: ["Idea", "Open call", "Artist", "Jury", "Development", "Production"],
+      closing:
+        "Un solo equipo acompaña la convocatoria desde la idea hasta su materialización.",
+    } satisfies BandadasValueContent,
+  },
   roadmap: {
     status: contentStatuses.proposed,
     data: [
-      { period: "November 2026", focus: "Concept + alliance + bases" },
-      { period: "December / January", focus: "Preparation" },
-      { period: "February", focus: "Open call" },
-      { period: "March", focus: "Selection + finalists" },
-      { period: "April", focus: "Winner + development" },
+      { period: "November 2026", focus: "Concept", description: "Definición del premio, alcance y posibles alianzas." },
+      { period: "December / January", focus: "Preparation", description: "Bases, plataforma, identidad y estrategia de lanzamiento." },
+      { period: "February 2027", focus: "Open call", description: "Lanzamiento y convocatoria de artistas." },
+      { period: "March", focus: "Selection", description: "Evaluación y desarrollo de finalistas." },
+      { period: "April", focus: "Winner", description: "Selección y comienzo de producción." },
     ] satisfies ProposedMilestone[],
+  },
+  closing: {
+    status: contentStatuses.proposed,
+    data: {
+      territory: "The Art of Skin",
+      answer: "can become a platform for art.",
+      prize: "Premio SKINKO a las Artes",
+      year: "2027",
+      signature: "SKINKO × BANDADAS",
+      invitation: "Let's build it.",
+    } satisfies ClosingContent,
   },
 } satisfies Record<string, StatusedContent<unknown>>;

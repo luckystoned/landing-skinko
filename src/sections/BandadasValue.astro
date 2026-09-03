@@ -1,5 +1,64 @@
 ---
-import SectionPlaceholder from "@/components/common/SectionPlaceholder.astro";
----
-<SectionPlaceholder id="bandadas-value" title="Bandadas" />
+import EditorialHeading from "@/components/ui/EditorialHeading.astro";
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import type { BandadasValueContent } from "@/schemas/skinko";
 
+interface Props { value: BandadasValueContent }
+const { value } = Astro.props;
+---
+
+<section id="bandadas-value" class="bandadas" aria-labelledby="bandadas-value-title">
+  <header class="bandadas__header">
+    <SectionLabel index="10" label="Why Bandadas" inverse />
+    <p>Evidence → capability</p>
+  </header>
+  <div class="bandadas__intro">
+    <EditorialHeading id="bandadas-value-title" level="h2" size="display-lg">{value.headline}</EditorialHeading>
+    <p>{value.statement}</p>
+  </div>
+  <ol class="bandadas__voices" aria-label="Capacidades integradas de Bandadas">
+    {value.capabilities.map((capability, index) => (
+      <li><span>{String(index + 1).padStart(2, "0")}</span><strong>{capability}</strong></li>
+    ))}
+  </ol>
+  <div class="bandadas__continuity">
+    <p>One system</p>
+    <ol aria-label="Proceso acompañado por Bandadas">
+      {value.process.map((stage) => <li>{stage}</li>)}
+    </ol>
+  </div>
+  <p class="bandadas__closing">{value.closing}</p>
+</section>
+
+<style>
+  .bandadas { padding-inline: var(--space-gutter); color: var(--color-on-dark); background: var(--color-fg-primary); }
+  .bandadas__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-block-end: clamp(4rem, 10vw, 9rem); }
+  .bandadas__header > p, .bandadas__continuity > p { margin: 0; font: 600 var(--text-eyebrow)/1.2 var(--font-utility); letter-spacing: 0.1em; text-align: end; text-transform: uppercase; color: color-mix(in srgb, var(--color-on-dark) 58%, transparent); }
+  .bandadas__intro { display: grid; gap: 2rem; }
+  .bandadas__intro :global(.editorial-heading) { max-width: 9ch; text-transform: uppercase; }
+  .bandadas__intro > p { max-width: 27rem; margin: 0; font: clamp(1.5rem, 4vw, 3rem)/1.05 var(--font-editorial); }
+  .bandadas__voices { margin: clamp(5rem, 12vw, 10rem) 0 0; padding: 0; border-block-start: 1px solid var(--color-on-dark); list-style: none; }
+  .bandadas__voices li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-block: 0.75rem; border-block-end: 1px solid color-mix(in srgb, var(--color-on-dark) 30%, transparent); }
+  .bandadas__voices span, .bandadas__voices strong { font-family: var(--font-utility); font-size: var(--text-eyebrow); letter-spacing: 0.09em; text-transform: uppercase; }
+  .bandadas__voices strong { min-width: 0; font-family: var(--font-display); font-size: clamp(2.5rem, 10vw, 7.5rem); font-weight: 400; line-height: 0.9; letter-spacing: -0.035em; overflow-wrap: anywhere; }
+  .bandadas__continuity { margin-block-start: clamp(5rem, 12vw, 9rem); }
+  .bandadas__continuity > p { margin-block-end: 1rem; text-align: start; }
+  .bandadas__continuity ol { display: flex; flex-wrap: wrap; gap: 0; margin: 0; padding: 1rem 0; border-block: 1px solid var(--color-on-dark); list-style: none; font: var(--text-caption)/1.4 var(--font-utility); letter-spacing: 0.07em; text-transform: uppercase; }
+  .bandadas__continuity li:not(:last-child)::after { margin-inline: 0.55em; content: "→"; color: color-mix(in srgb, var(--color-on-dark) 45%, transparent); }
+  .bandadas__closing { max-width: 14ch; margin: clamp(4rem, 10vw, 8rem) 0 0 auto; font: clamp(2rem, 5vw, 4.75rem)/0.98 var(--font-editorial); text-align: end; }
+  @media (min-width: 48rem) {
+    .bandadas__intro { grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: 1rem; }
+    .bandadas__intro :global(.editorial-heading) { grid-column: 1 / 7; }
+    .bandadas__intro > p { grid-column: 5 / -1; }
+    .bandadas__voices li { grid-template-columns: 4rem minmax(0, 1fr); }
+  }
+  @media (min-width: 64rem) {
+    .bandadas__intro { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 1.25rem; }
+    .bandadas__intro :global(.editorial-heading) { grid-column: 1 / 9; }
+    .bandadas__intro > p { grid-column: 9 / -1; align-self: end; }
+    .bandadas__voices li { grid-template-columns: 5rem minmax(0, 1fr); padding-block: 0.35rem; }
+    .bandadas__voices strong { font-size: clamp(4.5rem, 7.5vw, 8rem); }
+    .bandadas__continuity { display: grid; grid-template-columns: 1fr 3fr; gap: 1.25rem; align-items: center; }
+    .bandadas__continuity > p { margin: 0; }
+  }
+</style>

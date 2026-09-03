@@ -1,76 +1,61 @@
 # Asset strategy and inventory
 
-No se descargaron, copiaron ni generaron assets en el Checkpoint 2. `Source` identifica a quién solicitar el material, no una autorización existente.
+Inventario final previo a presentación. `Source` identifica a quién solicitar el material; no implica autorización. Ningún asset externo fue descargado ni integrado.
 
 ## Reglas de ingestión
 
 1. Registrar propietario, autor, permiso, crédito obligatorio y fecha de aprobación.
-2. Conservar master original fuera de `public/`; generar derivados web trazables.
-3. Logos en SVG aprobado. Fotografías en AVIF/WebP con fallback cuando sea necesario.
-4. Definir `width`, `height`, `srcset`, `sizes`, alt y rol (`atmosphere`, `object`, `space`, `evidence`) antes de integrar.
-5. Hero/LCP ideal <200 KB y nunca lazy. Imágenes de contenido ideal <100–200 KB, lazy + async decode.
-6. No reutilizar imágenes encontradas durante visual research.
-7. Assets de partnership `PROPOSED` no se usan como si existiera patrocinio o aval.
+2. Conservar masters fuera de `public/` y generar derivados web trazables.
+3. Logos en SVG aprobado; fotografías en AVIF/WebP con fallback cuando corresponda.
+4. Definir dimensiones, `srcset`, `sizes`, alt y rol antes de integrar.
+5. Hero/LCP ideal menor a 200 KB y sin lazy loading. Resto ideal 100–200 KB, lazy + async decode.
+6. Anonimizar datos personales y material interno de GES.
+7. Una relación `PROPOSED` nunca puede representarse visualmente como alianza confirmada.
 
-## CRITICAL
+## REQUIRED BEFORE CLIENT PRESENTATION
 
-| Marca | Asset | Source | Uso | Copyright / permiso | Ideal | Sección |
-| --- | --- | --- | --- | --- | --- | --- |
-| Skinko | Logo maestro y variantes | Equipo Skinko / brand kit | Firma y convivencia de marcas | Pendiente; solicitar SVG + clearspace | SVG, horizontal/vertical | Hero, Closing |
-| Skinko | Brand guidelines vigentes | Equipo Skinko | Validar color, tipografía y restricciones | Pendiente, uso interno | PDF + archivos vinculados | Sistema completo |
-| Skinko | Campaña `THE ART OF SKIN` | Skinko / productora / fotógrafo | Probar territorio artístico existente | Pendiente; autor y alcance comercial | Masters; 16:9, 4:5 y 3:2 | Art of Skin |
-| Skinko | Living Sculptures | Skinko / productora | Evidencia visual de activación | Pendiente | 2400 px lado largo; 4:5/3:2 | Art of Skin |
-| Skinko | Gallery interventions / obras clásicas intervenidas | Skinko / productora / titulares de obra | Relación arte–retail | Pendiente; revisar derechos de obra y foto | 2400 px; ratio nativo | Art of Skin |
-| Skinko | Galerías Pacífico / arquitectura | Skinko, Galerías Pacífico o fotógrafo | Tensión arquitectura clásica × beauty | Pendiente; no tomar del sitio público | 2560 px; 16:9 y vertical | Hero, Art of Skin |
-| GES | Landing y plataforma | Bandadas / proyecto GES | Evidencia real de ejecución | Revisión interna y anonimización pendiente | PNG master + WebP; 16:10 | GES Case |
-| GES | Formulario y campos dinámicos | Bandadas / proyecto GES | Evidencia de tecnología y UX | Pendiente; ocultar datos personales | PNG master + WebP; 4:3/vertical | GES Case |
-| Bandadas | Logo maestro | Bandadas | Firma | Confirmar versión aprobada | SVG | Bandadas, Closing |
+| Área | Asset | Source | Uso / condición | Formato ideal |
+| --- | --- | --- | --- | --- |
+| SKINKO | Logo oficial y variantes | Equipo SKINKO / brand kit | Firma y convivencia de marcas; validar clearspace | SVG |
+| SKINKO | Brand guidelines vigentes | Equipo SKINKO | Validar color, tipografía y restricciones | PDF + vinculados |
+| SKINKO | Hero oficial `The Art of Skin` | SKINKO / productora / fotógrafo | Reemplazar el placeholder principal; confirmar derechos comerciales | 4:5, master 2400 px |
+| SKINKO | `The Living Sculptures` | SKINKO / productora | Evidencia visual de activación | 4:5 o 3:2, 2400 px |
+| SKINKO | `Become the Artist` | SKINKO / productora | Evidencia de participación | 16:9 y 4:5 |
+| SKINKO | `The Masterpiece` | SKINKO / productora | Cierre del antecedente visual | 3:2 o 4:5, 2400 px |
+| GES | Landing real | Bandadas / proyecto GES | Evidencia del caso; revisar publicación | PNG master + WebP 16:10 |
+| GES | Flow / plataforma | Bandadas / proyecto GES | Formulario, validaciones y experiencia; anonimizar | PNG master + WebP 4:3 |
+| GES | Comunicación | Bandadas / proyecto GES | Identidad y difusión; aprobar piezas mostradas | 1080×1350 o 1080×1920 |
+| Bandadas | Logo maestro | Bandadas | Firma final aprobada | SVG |
 
-## IMPORTANT
+## NICE TO HAVE
 
-| Marca | Asset | Source | Uso | Copyright / permiso | Ideal | Sección |
-| --- | --- | --- | --- | --- | --- | --- |
-| Skinko | Interactive screens | Skinko / integrador audiovisual | Evidencia de interacción existente | Pendiente | Foto 3:2 + captura 16:9 | Art of Skin |
-| Skinko | Become the Artist | Skinko / productora | Participación de audiencia | Pendiente | Foto/video still 16:9 y 4:5 | Art of Skin |
-| Skinko | The Masterpiece | Skinko / productora | Clímax del antecedente | Pendiente | 2400 px; 3:2 o 4:5 | Art of Skin |
-| Skinko | Products / objects | Skinko / marcas distribuidas | Posibilidades de cápsula | Pendiente; validar marcas de terceros | Cutouts + 4:5, fondo limpio | Possibilities |
-| Skinko | Store / retail | Skinko / arquitecto / fotógrafo | Aplicación espacial posible | Pendiente | 2400 px; 16:9 y 3:2 | Possibilities |
-| Skinko | Packaging mockup neutro | Skinko / diseño futuro aprobado | Evaluar una aplicación sin presentar un diseño definitivo | No producir hasta aprobar concepto y dieline | Master editable + 3:4 | Possibilities |
-| Skinko | Object / product mockup | Skinko / diseño o 3D futuro aprobado | Probar escala objetual de la misma idea | No producir hasta aprobar producto y materiales | Master editable + 1:1 y 4:5 | Possibilities |
-| Skinko | Digital / content surfaces | Skinko / diseño futuro aprobado | Reencuadre de la cápsula en pantalla y editorial | Pendiente; sin UI ni campaña inventada | 16:9 y 3:4 | Possibilities |
-| Skinko | Experience / installation frame | Skinko / productora futura | Mostrar una posible manifestación espacial | No producir como proyecto confirmado | 2400 px; 16:9 | Possibilities |
-| GES | Piezas de identidad y social | Bandadas / proyecto GES | Evidencia de comunicación | Revisión de publicación pendiente | 1080×1350, 1080×1920 | GES Case |
-| GES | Bases y condiciones / documentación | Bandadas / cliente GES | Evidencia legal y documental | Uso parcial/anónimo pendiente | PDF + crops 3:2 | Hidden System, GES |
-| GES | Timeline y materiales de proceso | Bandadas / proyecto GES | Mostrar coordinación | Pendiente; limpiar información sensible | 1600×1000 o ratio nativo | GES Case |
-| GES | Kanban / dashboard | Bandadas / proyecto GES | Operación real, solo si agrega claridad | Pendiente; anonimización crítica | 1600×1000 | GES Case |
-| Bandadas | UI / plataforma | Bandadas | Capacidad tecnológica | Confirmar versión y datos visibles | PNG master + WebP; 16:10 | Bandadas Value |
-| Bandadas | Sistema de identidad | Bandadas | Firma y captions | Confirmar archivos vigentes | SVG/PDF | Bandadas Value |
+| Área | Asset | Source | Uso / condición | Formato ideal |
+| --- | --- | --- | --- | --- |
+| SKINKO | Galerías Pacífico / arquitectura | SKINKO, Galerías Pacífico o fotógrafo | Contexto arquitectura × beauty; no tomar del sitio público | 16:9 y vertical |
+| SKINKO | Interactive screens | SKINKO / integrador audiovisual | Contexto de interacción existente | Foto 3:2 + captura 16:9 |
+| SKINKO | Store / retail | SKINKO / arquitecto / fotógrafo | Posible aplicación espacial | 16:9 y 3:2 |
+| SKINKO | Products / objects | SKINKO / marcas distribuidas | Posibles soportes; validar terceros | Cutouts + 4:5 |
+| GES | Bases y documentación | Bandadas / cliente GES | Evidencia legal parcial y anónima | PDF + crops 3:2 |
+| GES | Timeline o dashboard | Bandadas / proyecto GES | Operación real solo si suma claridad; anonimización crítica | 1600×1000 |
+| Bandadas | Sistema de identidad | Bandadas | Apoyo de firma si aporta al cierre | SVG/PDF |
+| Institución | Imagen autorizada | Museo / fotógrafo / artista | Solo tras validar conversación, derechos y encuadre `PROPOSED` | Ratio nativo, 2400 px |
 
-## OPTIONAL
+## LATER / PUBLIC OPEN CALL
 
-| Marca | Asset | Source | Uso | Copyright / permiso | Ideal | Sección |
-| --- | --- | --- | --- | --- | --- | --- |
-| Skinko | Macros de piel | Sesión propia o licencia explícita | Atmósfera y transición | No adquirido | 2400 px; 1:1 y 16:9 | Hero, transitions |
-| Skinko | Vidrio / chrome / reflejos | Sesión propia, 3D o licencia | Materialidad contemporánea | No adquirido; documentar IA/3D si aplica | 2400 px; múltiples ratios | Hero, Possibilities |
-| Skinko | Video de activación | Skinko / productora | Contexto guiado, no estructural | Pendiente | MP4/WebM corto + poster; <2 MB objetivo | Art of Skin |
-| Museo | Logo institucional | Museo Nacional de Arte Oriental | Identificación de vínculo potencial | No solicitar/usar hasta validar conversación | SVG oficial | Cultural Connection |
-| Museo | Arquitectura / colección | Museo / fotógrafos / artistas | Contexto cultural potencial | Derechos complejos; no usar sin acuerdo | 2400 px; ratio nativo | Cultural Connection |
-| Proyecto | OG image | Diseño futuro aprobado | Preview al compartir | Pendiente de key visual | 1200×630, <300 KB | Metadata |
-| Proyecto | Favicon final | Identidad futura | Browser UI | Pendiente | SVG + PNG fallbacks | Global |
-| Proyecto | Fuentes | Foundry / repositorio oficial | Sistema tipográfico | Pendiente de elección/licencia | WOFF2 subset, pesos mínimos | Global |
+| Área | Asset | Momento / condición |
+| --- | --- | --- |
+| Premio | Identidad pública definitiva | Después de aprobación conceptual y de marca |
+| Premio | Key visual y campaña de convocatoria | Después de definir bases, calendario y permisos |
+| Premio | Packaging, objeto y producto finales | Después de concepto, dielines, materiales y derechos aprobados |
+| Premio | Sitio y UI pública de postulación | Después de aprobar alcance funcional y privacidad |
+| Premio | Retratos, obras y perfiles de artistas | Solo con consentimiento y selección confirmada |
+| Premio | Jurado, institución, alianzas y logos asociados | Solo tras acuerdos confirmados |
+| Proyecto | OG image pública | Al decidir publicación; 1200×630, menor a 300 KB |
+| Proyecto | Favicon e iconografía finales | Con identidad pública aprobada |
+| Proyecto | Fuentes definitivas | Tras confirmar licencia y subset WOFF2 |
 
 ## Nomenclatura y entrega
 
-- `skinko-art-of-skin-living-sculpture-01-master.tif`
-- `skinko-art-of-skin-living-sculpture-01-1600.avif`
-- `ges-platform-form-stage-01.webp`
-- Nombres en minúscula, guiones, sin “final-final”.
-- Entregar un manifest con `asset`, `owner`, `author`, `rights`, `credit`, `status`, `section`, `altDraft`.
-
-## Orden de solicitud
-
-1. Brand guidelines + logos Skinko/Bandadas.
-2. Selección curada de 12–20 masters de `THE ART OF SKIN` con derechos.
-3. Paquete GES anonimizado: landing, plataforma, formulario, piezas y proceso.
-4. Retail/product y posibles soportes.
-5. Assets atmosféricos o generados solo después de detectar huecos reales.
+- Nombres en minúscula y con guiones: `skinko-art-of-skin-living-sculpture-01-1600.avif`.
+- Incluir manifest con `asset`, `owner`, `author`, `rights`, `credit`, `status`, `section` y `altDraft`.
+- Orden de solicitud: brand kit → selección SKINKO → paquete GES anonimizado → assets opcionales.
