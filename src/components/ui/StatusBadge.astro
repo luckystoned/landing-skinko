@@ -1,0 +1,13 @@
+---
+import type { ContentStatus } from "@/schemas/skinko";
+
+interface Props {
+  status: ContentStatus;
+  label?: string;
+}
+
+const { status, label = status.replaceAll("_", " ") } = Astro.props;
+---
+
+<span class="status-badge" data-status={status}>{label}</span>
+

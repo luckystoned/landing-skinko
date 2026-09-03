@@ -1,0 +1,21 @@
+---
+import StatusBadge from "@/components/ui/StatusBadge.astro";
+import type { ContentStatus } from "@/schemas/skinko";
+
+interface Props {
+  id: string;
+  title: string;
+  status?: ContentStatus;
+  statusLabel?: string;
+}
+
+const { id, title, status, statusLabel } = Astro.props;
+const headingId = `${id}-title`;
+---
+
+<section id={id} aria-labelledby={headingId}>
+  {status && <StatusBadge status={status} label={statusLabel} />}
+  <h2 id={headingId}>{title}</h2>
+  <p>Contenido pendiente de aprobación en el próximo checkpoint.</p>
+</section>
+

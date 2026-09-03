@@ -1,0 +1,8 @@
+---
+import SectionPlaceholder from "@/components/common/SectionPlaceholder.astro";
+import type { ContentStatus } from "@/schemas/skinko";
+interface Props { status: ContentStatus }
+const { status } = Astro.props;
+---
+<SectionPlaceholder id="cultural-connection" title="Cultural Connection" {status} statusLabel="Proposed partnership" />
+

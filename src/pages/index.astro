@@ -1,0 +1,42 @@
+---
+import { proposal } from "@/content/skinko/proposal";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { homeMetadata } from "@/seo/metadata";
+import { buildWebPageSchema } from "@/seo/schemas";
+import ArtOfSkin from "@/sections/ArtOfSkin.astro";
+import BandadasValue from "@/sections/BandadasValue.astro";
+import CulturalConnection from "@/sections/CulturalConnection.astro";
+import FinalCta from "@/sections/FinalCta.astro";
+import GesCaseStudy from "@/sections/GesCaseStudy.astro";
+import Hero from "@/sections/Hero.astro";
+import HiddenSystem from "@/sections/HiddenSystem.astro";
+import Journey from "@/sections/Journey.astro";
+import Opportunity from "@/sections/Opportunity.astro";
+import Possibilities from "@/sections/Possibilities.astro";
+import PremioConcept from "@/sections/PremioConcept.astro";
+import Roadmap from "@/sections/Roadmap.astro";
+
+const canonical = new URL(homeMetadata.canonicalPath, Astro.site ?? Astro.url.origin);
+const schema = buildWebPageSchema({
+  name: homeMetadata.title,
+  description: homeMetadata.description,
+  url: canonical.href,
+});
+---
+
+<BaseLayout metadata={homeMetadata} schema={schema}>
+  <main id="content" class="mx-auto w-[calc(100%-2rem)] max-w-content">
+    <Hero />
+    <ArtOfSkin />
+    <Opportunity status={proposal.opportunity.status} />
+    <PremioConcept status={proposal.prize.status} />
+    <Possibilities status={proposal.possibilities.status} />
+    <Journey status={proposal.journey.status} />
+    <CulturalConnection status={proposal.culturalConnection.status} />
+    <HiddenSystem />
+    <GesCaseStudy />
+    <BandadasValue />
+    <Roadmap status={proposal.roadmap.status} />
+    <FinalCta />
+  </main>
+</BaseLayout>
