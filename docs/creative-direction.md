@@ -1,40 +1,31 @@
-# Dirección creativa propuesta
+# Dirección creativa
 
-Estado: **PROPOSED**. Este documento orienta el próximo checkpoint; no constituye diseño aprobado.
+Estado del sistema: **PROPOSED**, pendiente de aprobación visual antes del Checkpoint 3.
 
-## Concepto
+## Concepto rector
 
-**Exhibition dossier for a cultural platform.**
+**A living exhibition dossier: classical frame, contemporary surface, operational core.**
 
-La presentación debería sentirse como un catálogo de exposición contemporánea atravesado por códigos de luxury beauty: espacio blanco, escala tipográfica, silencios, materiales reflectivos y una secuencia narrativa precisa. La tensión central es entre arquitectura clásica y superficies contemporáneas —piel, vidrio, acero y chrome— sin copiar literalmente la identidad de Skinko.
+La landing se comporta como un dossier expositivo vivo. Su marco toma precisión y pausa del catálogo cultural; su superficie toma luz, piel, vidrio y metal del universo beauty; su núcleo revela la operación real que vuelve posible un premio. La tensión no se resuelve decorando con chrome: se construye enfrentando arquitectura clásica y superficies contemporáneas, contemplación y sistema, promesa y evidencia.
 
-## Sistema visual preliminar
+## Carácter
 
-- Paleta: blanco, off-white, negro, silver y chrome.
-- Tipografía: contraste entre una voz editorial/display y una sans funcional; familias pendientes de licencia y aprobación.
-- Composición: grillas asimétricas, bloques de gran escala y mucho espacio negativo.
-- Materialidad: reflejos controlados, recortes macro y transparencias sutiles; evitar gradientes tech genéricos.
-- Componentes: pocos patrones, sin proliferación de cards ni aspecto de dashboard/SaaS.
-- Ritmo: alternar momentos contemplativos con densidad operativa para que “The Hidden System” marque el punto de inflexión.
+- Premium por edición y detalle, no por ornamentación.
+- Cultural sin volverse académico o solemne.
+- Contemporáneo sin códigos crypto o tech-demo.
+- Específico para Skinko sin copiar su ecommerce.
+- Cinematográfico en presentación guiada y completo en lectura autónoma.
 
-## Narrativa visual
+## Lenguaje
 
-1. **Skinko primero:** reconocimiento inmediato de “The Art of Skin”.
-2. **Cambio de escala:** activation → platform, event → program, audience → community.
-3. **Posibilidad:** soportes potenciales de la cápsula, siempre en lenguaje condicional.
-4. **Proceso:** recorrido progresivo, no diagrama corporativo.
-5. **Revelación:** la aparente simplicidad de una open call contiene un sistema operativo.
-6. **Evidencia:** GES como caso en curso, sin resultados inventados.
-7. **Cierre:** síntesis Skinko × Bandadas y próximo paso.
+El cuerpo será español. El inglés queda reservado para territorios existentes, nombres de escenas y frases breves con función editorial: `THE ART OF SKIN`, `THE HIDDEN SYSTEM`, `WHAT COULD ART BECOME?`, `CASE IN PROGRESS` y `LET'S BUILD IT.` No se usará Spanglish ornamental.
 
-## Interacción futura
+## Materialidad
 
-CSS sticky, transforms y transitions como primera opción; `IntersectionObserver` vanilla solo cuando aporte progresión narrativa. Sin scroll hijacking. Cada escena tendrá lectura estática equivalente y respetará `prefers-reduced-motion`.
+La base es mate: papel cálido, tinta profunda y líneas minerales. La sensación metálica será plana hasta contar con fotografía o 3D autorizado; no se simulará chrome mediante gradientes CSS. Imágenes futuras deben mostrar superficie, escala y espacio, no funcionar como fondos genéricos.
 
-## Preguntas para aprobación
+## Ritmo
 
-- ¿La presentación debe replicar alguna tipografía o código ya aprobado de Skinko?
-- ¿El tono final será íntegramente inglés, bilingüe o español con titulares en inglés?
-- ¿Se presentará en reunión guiada, se enviará para lectura autónoma o ambas?
-- ¿Hay restricciones de confidencialidad adicionales, acceso por contraseña o expiración?
+La experiencia alterna apertura, expansión, progresión y densidad. `THE HIDDEN SYSTEM` constituye el cambio emocional principal: de una idea elegante a una máquina cultural compleja. GES cambia después el registro a evidencia documental.
 
+La especificación completa vive en [design-system.md](./design-system.md), [narrative-architecture.md](./narrative-architecture.md) e [interaction-architecture.md](./interaction-architecture.md).
