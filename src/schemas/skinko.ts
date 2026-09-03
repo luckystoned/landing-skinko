@@ -26,6 +26,7 @@ export interface ArtExperience {
 
 export interface PrizeConcept {
   name: string;
+  displayLines: string[];
   summary: string;
   development: string;
   disciplines: string[];

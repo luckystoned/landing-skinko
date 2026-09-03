@@ -1,8 +1,282 @@
 ---
-import SectionPlaceholder from "@/components/common/SectionPlaceholder.astro";
-import type { ContentStatus } from "@/schemas/skinko";
-interface Props { status: ContentStatus }
-const { status } = Astro.props;
----
-<SectionPlaceholder id="possibilities" title="What could art become?" {status} />
+import EditorialHeading from "@/components/ui/EditorialHeading.astro";
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import type { ContentStatus, ProposedApplication } from "@/schemas/skinko";
 
+interface Props {
+  status: ContentStatus;
+  applications: ProposedApplication[];
+}
+
+const { status, applications } = Astro.props;
+const ratios: Record<ProposedApplication["ratio"], string> = {
+  "1:1": "1 / 1",
+  "3:4": "3 / 4",
+  "4:5": "4 / 5",
+  "16:9": "16 / 9",
+};
+---
+
+<section
+  id="possibilities"
+  class="possibilities"
+  aria-labelledby="possibilities-title"
+  data-status={status}
+>
+  <div class="possibilities__intro">
+    <SectionLabel index="05" label="Possibilities" />
+    <EditorialHeading id="possibilities-title" level="h2" size="display-lg">
+      What could art become?
+    </EditorialHeading>
+    <p>
+      Una misma idea podría cambiar de escala, soporte y contexto sin perder su identidad.
+    </p>
+    <span>Conceptual applications · {status}</span>
+  </div>
+
+  <ol class="possibilities__grid">
+    {
+      applications.map((application, index) => (
+        <li style={`--application-ratio: ${ratios[application.ratio]}; --motif-scale: ${72 + (index % 3) * 18}%`}>
+          <figure>
+            <div class="possibilities__frame">
+              <span>FIG. {String(Number(application.index) + 3).padStart(2, "0")}</span>
+              <strong>{application.name}</strong>
+              <div class="possibilities__motif" aria-hidden="true">
+                <span />
+                <span />
+              </div>
+              <span>Conceptual application</span>
+              <span>Asset / mockup pending</span>
+              <span>{application.ratio}</span>
+              <span>{status}</span>
+            </div>
+            <figcaption>
+              <span>{application.index}</span>
+              <strong>{application.name}</strong>
+              <span>Proposed application</span>
+            </figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .possibilities {
+    padding-inline: var(--space-gutter);
+    background: var(--color-bg-secondary);
+  }
+
+  .possibilities__intro {
+    display: grid;
+    gap: 1.5rem;
+    margin-block-end: clamp(4rem, 10vw, 9rem);
+  }
+
+  .possibilities__intro :global(.editorial-heading) {
+    max-width: 10ch;
+    text-transform: uppercase;
+  }
+
+  .possibilities__intro > p {
+    max-width: 29rem;
+    margin: 0;
+  }
+
+  .possibilities__intro > span {
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+
+  .possibilities__grid {
+    display: grid;
+    gap: clamp(4rem, 12vw, 9rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  .possibilities__frame {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto 1fr auto auto;
+    gap: 0.75rem;
+    overflow: hidden;
+    aspect-ratio: var(--application-ratio);
+    padding: 1rem;
+    border: 1px solid var(--color-fg-primary);
+    background:
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px),
+      var(--color-bg-secondary);
+    background-size: 3rem 3rem;
+    font-family: var(--font-utility);
+    font-size: var(--text-eyebrow);
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .possibilities__frame > strong {
+    position: relative;
+    z-index: 1;
+    grid-column: 2;
+    justify-self: end;
+    max-width: 9ch;
+    text-align: end;
+  }
+
+  .possibilities__frame > span:nth-last-child(4),
+  .possibilities__frame > span:nth-last-child(3) {
+    position: relative;
+    z-index: 1;
+    grid-column: 1 / -1;
+  }
+
+  .possibilities__frame > span:nth-last-child(3) {
+    color: var(--color-fg-muted);
+  }
+
+  .possibilities__frame > span:nth-last-child(2),
+  .possibilities__frame > span:last-child {
+    align-self: end;
+  }
+
+  .possibilities__frame > span:last-child {
+    text-align: end;
+  }
+
+  .possibilities__motif {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: var(--motif-scale);
+    aspect-ratio: 1;
+    border: 1px solid var(--color-metal);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .possibilities__motif span {
+    position: absolute;
+    inset: 18%;
+    border: 1px solid var(--color-metal);
+    transform: rotate(45deg);
+  }
+
+  .possibilities__motif span:last-child {
+    inset: 34%;
+    transform: rotate(0);
+  }
+
+  figcaption {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.25rem 0.75rem;
+    padding-block-start: 0.8rem;
+    font-family: var(--font-utility);
+    font-size: var(--text-caption);
+    line-height: 1.3;
+  }
+
+  figcaption strong {
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  figcaption > span:last-child {
+    grid-column: 2;
+    color: var(--color-fg-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .possibilities__intro {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      column-gap: 1rem;
+    }
+
+    .possibilities__intro > :global(*) {
+      grid-column: 1 / -1;
+    }
+
+    .possibilities__intro :global(.editorial-heading) {
+      grid-column: 1 / 7;
+    }
+
+    .possibilities__intro > p,
+    .possibilities__intro > span {
+      grid-column: 5 / -1;
+    }
+
+    .possibilities__grid {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      column-gap: 1rem;
+    }
+
+    .possibilities__grid li:nth-child(odd) {
+      grid-column: 1 / 6;
+    }
+
+    .possibilities__grid li:nth-child(even) {
+      grid-column: 5 / -1;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .possibilities__intro,
+    .possibilities__grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 1.25rem;
+    }
+
+    .possibilities__intro :global(.editorial-heading) {
+      grid-column: 1 / 9;
+    }
+
+    .possibilities__intro > p,
+    .possibilities__intro > span {
+      grid-column: 8 / -1;
+    }
+
+    .possibilities__grid li:nth-child(1) { grid-column: 1 / 8; }
+    .possibilities__grid li:nth-child(2) { grid-column: 9 / -1; margin-block-start: 8rem; }
+    .possibilities__grid li:nth-child(3) { grid-column: 2 / 6; }
+    .possibilities__grid li:nth-child(4) { grid-column: 7 / 12; }
+    .possibilities__grid li:nth-child(5) { grid-column: 1 / 7; }
+    .possibilities__grid li:nth-child(6) { grid-column: 8 / 12; margin-block-start: 7rem; }
+    .possibilities__grid li:nth-child(7) { grid-column: 4 / 11; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .possibilities__grid li {
+        animation: application-enter linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 32%;
+      }
+
+      @keyframes application-enter {
+        from {
+          opacity: 0.45;
+          transform: translateY(1.5rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+</style>

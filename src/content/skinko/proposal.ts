@@ -54,6 +54,7 @@ export const proposal = {
     status: contentStatuses.proposed,
     data: {
       name: "Premio Skinko a las Artes 2027",
+      displayLines: ["Premio", "Skinko", "a las Artes", "2027"],
       summary:
         "Una convocatoria propuesta para seleccionar un/a artista que interprete el universo SKINKO.",
       development:

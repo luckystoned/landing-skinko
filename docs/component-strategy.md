@@ -1,16 +1,16 @@
 # Component strategy
 
-Estado: **PROPOSED**. No se implementaron componentes nuevos en este checkpoint.
+Estado: **IN USE**. El sistema se mantiene deliberadamente pequeño y orientado a responsabilidades editoriales concretas.
 
 ## Candidatos con reutilización real
 
 | Componente | Responsabilidad | Usos esperados | Decisión |
 | --- | --- | --- | --- |
-| `SectionLabel` | Número de capítulo + eyebrow | 8–12 secciones | Crear cuando comience implementación. |
-| `EditorialHeading` | Titular display con eyebrow y ancho controlado | Hero, Opportunity, Hidden System, cierre | Crear solo si las props evitan duplicación real. |
+| `SectionLabel` | Número de capítulo + eyebrow | 8–12 secciones | Implementado. |
+| `EditorialHeading` | Titular display con nivel y escala tipada | Hero, Opportunity y capítulos editoriales | Implementado. |
 | `StatusBadge` | Estado editorial contextual | Partnership, GES, roadmap | Ya existe; refinar labels, no convertir en chip. |
-| `Figure` | Imagen/picture, ratio, alt, caption, crédito y estado de permiso | Art of Skin, Possibilities, GES | Prioridad alta cuando lleguen assets. |
-| `PhaseLabel` | Número, nombre y copy corto de fase | Journey y posiblemente Roadmap | Crear si ambos comparten semántica; si no, mantener local. |
+| `Figure` | Imagen/picture, ratio, alt, caption, crédito y estado de permiso | Art of Skin, Hero y evidencia futura | Implementado; admite placeholder y asset real. |
+| `PhaseLabel` | Número, nombre y copy corto de fase | Siete pasos de Journey y posible Roadmap | Implementado para mantener semántica y lectura consistente. |
 | `EvidenceItem` | Figure o documento + caption + hecho verificable | GES | Crear después de auditar los assets reales. |
 
 ## Mantener dentro de la sección
@@ -35,4 +35,3 @@ Son piezas narrativas específicas; extraerlas a una biblioteca genérica oculta
 - Variantes finitas; no props que acepten clases arbitrarias por defecto.
 - Semántica nativa y slot solo cuando exista una composición legítima.
 - El contenido vive en `src/content/skinko`, no en defaults del componente.
-

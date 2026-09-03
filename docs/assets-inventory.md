@@ -35,6 +35,10 @@ No se descargaron, copiaron ni generaron assets en el Checkpoint 2. `Source` ide
 | Skinko | The Masterpiece | Skinko / productora | Clímax del antecedente | Pendiente | 2400 px; 3:2 o 4:5 | Art of Skin |
 | Skinko | Products / objects | Skinko / marcas distribuidas | Posibilidades de cápsula | Pendiente; validar marcas de terceros | Cutouts + 4:5, fondo limpio | Possibilities |
 | Skinko | Store / retail | Skinko / arquitecto / fotógrafo | Aplicación espacial posible | Pendiente | 2400 px; 16:9 y 3:2 | Possibilities |
+| Skinko | Packaging mockup neutro | Skinko / diseño futuro aprobado | Evaluar una aplicación sin presentar un diseño definitivo | No producir hasta aprobar concepto y dieline | Master editable + 3:4 | Possibilities |
+| Skinko | Object / product mockup | Skinko / diseño o 3D futuro aprobado | Probar escala objetual de la misma idea | No producir hasta aprobar producto y materiales | Master editable + 1:1 y 4:5 | Possibilities |
+| Skinko | Digital / content surfaces | Skinko / diseño futuro aprobado | Reencuadre de la cápsula en pantalla y editorial | Pendiente; sin UI ni campaña inventada | 16:9 y 3:4 | Possibilities |
+| Skinko | Experience / installation frame | Skinko / productora futura | Mostrar una posible manifestación espacial | No producir como proyecto confirmado | 2400 px; 16:9 | Possibilities |
 | GES | Piezas de identidad y social | Bandadas / proyecto GES | Evidencia de comunicación | Revisión de publicación pendiente | 1080×1350, 1080×1920 | GES Case |
 | GES | Bases y condiciones / documentación | Bandadas / cliente GES | Evidencia legal y documental | Uso parcial/anónimo pendiente | PDF + crops 3:2 | Hidden System, GES |
 | GES | Timeline y materiales de proceso | Bandadas / proyecto GES | Mostrar coordinación | Pendiente; limpiar información sensible | 1600×1000 o ratio nativo | GES Case |
@@ -70,4 +74,3 @@ No se descargaron, copiaron ni generaron assets en el Checkpoint 2. `Source` ide
 3. Paquete GES anonimizado: landing, plataforma, formulario, piezas y proceso.
 4. Retail/product y posibles soportes.
 5. Assets atmosféricos o generados solo después de detectar huecos reales.
-
