@@ -71,7 +71,12 @@ html {
 body {
   margin: 0;
   min-width: 20rem;
+  overflow-x: clip;
   background: var(--color-bg-primary);
+}
+
+img {
+  max-width: 100%;
 }
 
 :focus-visible {

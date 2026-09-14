@@ -9,7 +9,7 @@ export interface PageMetadata {
 export const homeMetadata: PageMetadata = {
   title: "Premio SKINKO a las Artes 2027 | Propuesta de Bandadas",
   description:
-    "Presentación comercial privada de Bandadas para convertir The Art of Skin en una plataforma cultural.",
+    "Presentación comercial privada de Bandadas para crear una obra site-specific en un espacio de SKINKO.",
   canonicalPath: "/",
   ogType: "website",
   twitterCard: "summary",

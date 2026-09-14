@@ -1,0 +1,20 @@
+---
+import EditorialHeading from "@/components/ui/EditorialHeading.astro";
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import type { SiteSpecificContent } from "@/schemas/skinko";
+interface Props { content: SiteSpecificContent }
+const { content } = Astro.props;
+---
+<section id="why-site-specific" class="why" aria-labelledby="why-title">
+  <SectionLabel index="05" label="Why site-specific" />
+  <EditorialHeading id="why-title" level="h2" size="display-lg">Why this work—and not simply any artwork?</EditorialHeading>
+  <ol>{content.reasons.map((reason, index) => <li><span>{String(index + 1).padStart(2,"0")}</span><h3>{reason.label}</h3><p>{reason.description}</p></li>)}</ol>
+  <div class="positioning"><p>{content.positioning}</p><strong>Cultura de marca.</strong></div>
+  <p class="closing">{content.closing}</p>
+</section>
+<style>
+  .why{padding-inline:var(--space-gutter);background:var(--color-bg-secondary)}.why :global(.editorial-heading){max-width:13ch;margin:clamp(3rem,8vw,7rem) 0}
+  ol{list-style:none;margin:0;padding:0;border-block-start:1px solid var(--color-fg-primary)}li{display:grid;grid-template-columns:2.5rem 1fr;gap:.5rem 1rem;padding:1.5rem 0;border-block-end:1px solid var(--color-border)}li>span{font:600 var(--text-eyebrow)/1.3 var(--font-utility)}h3,p{margin:0}li p{grid-column:2;max-width:34rem;color:var(--color-fg-muted)}
+  .positioning{display:grid;gap:2rem;margin-block:clamp(5rem,12vw,10rem);padding-block:2rem;border-block:1px solid var(--color-border)}.positioning p{max-width:38rem;font-size:var(--text-body-lg)}.positioning strong{font:400 clamp(2.5rem,7vw,6rem)/.9 var(--font-display)}.closing{max-width:28ch;margin:0 0 0 auto;font:400 clamp(1.7rem,4vw,3.4rem)/1.05 var(--font-editorial)}
+  @media(min-width:48rem){li{grid-template-columns:3rem 1fr 1fr;align-items:baseline}li p{grid-column:3}.positioning{grid-template-columns:1fr 1fr;align-items:end}}
+</style>

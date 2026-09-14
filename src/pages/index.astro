@@ -1,20 +1,21 @@
 ---
 import { proposal } from "@/data/skinko/proposal";
+import { benchmarks } from "@/data/skinko/benchmarks";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { homeMetadata } from "@/seo/metadata";
 import { buildWebPageSchema } from "@/seo/schemas";
 import ArtOfSkin from "@/sections/ArtOfSkin.astro";
 import BandadasValue from "@/sections/BandadasValue.astro";
-import CulturalConnection from "@/sections/CulturalConnection.astro";
+import Benchmarks from "@/sections/Benchmarks.astro";
 import FinalCta from "@/sections/FinalCta.astro";
 import GesCaseStudy from "@/sections/GesCaseStudy.astro";
 import Hero from "@/sections/Hero.astro";
 import HiddenSystem from "@/sections/HiddenSystem.astro";
 import Journey from "@/sections/Journey.astro";
 import Opportunity from "@/sections/Opportunity.astro";
-import Possibilities from "@/sections/Possibilities.astro";
 import PremioConcept from "@/sections/PremioConcept.astro";
 import Roadmap from "@/sections/Roadmap.astro";
+import WhySiteSpecific from "@/sections/WhySiteSpecific.astro";
 
 const canonical = new URL(homeMetadata.canonicalPath, Astro.site ?? Astro.url.origin);
 const schema = buildWebPageSchema({
@@ -33,24 +34,18 @@ const schema = buildWebPageSchema({
     <ArtOfSkin experiences={proposal.artExperiences.data} />
     <Opportunity
       status={proposal.opportunity.status}
-      transformations={proposal.opportunity.data}
+      opportunity={proposal.opportunity.data}
     />
     <PremioConcept
       status={proposal.prize.status}
       concept={proposal.prize.data}
     />
-    <Possibilities
-      status={proposal.possibilities.status}
-      applications={proposal.possibilities.data}
-    />
+    <WhySiteSpecific content={proposal.siteSpecific.data} />
     <Journey
       status={proposal.journey.status}
       phases={proposal.journey.data}
     />
-    <CulturalConnection
-      status={proposal.culturalConnection.status}
-      connection={proposal.culturalConnection.data}
-    />
+    <Benchmarks {benchmarks} />
     <HiddenSystem system={proposal.hiddenSystem.data} />
     <GesCaseStudy />
     <BandadasValue value={proposal.bandadasValue.data} />

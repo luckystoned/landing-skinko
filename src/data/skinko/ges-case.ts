@@ -9,52 +9,21 @@ export const gesCase = {
   data: {
     name: "Premio GES a las Artes 2026",
     headline: "We're already building this.",
-    summary:
-      "GES comenzó como una convocatoria. Detrás hubo estrategia, legales, producto, soporte, comunicación y jurado trabajando como un solo proceso.",
-    workstreams: [
-      {
-        index: "01",
-        label: "Strategy",
-        details: ["Kickoff", "Alcance", "Requisitos", "Categorías", "Premios", "Fechas", "Metodología"],
-      },
-      {
-        index: "02",
-        label: "Platform",
-        details: ["STAGE", "PROD", "Formulario", "Campos dinámicos", "Validaciones", "Uploads", "Emails", "QA"],
-      },
-      {
-        index: "03",
-        label: "Communication",
-        details: ["Identidad", "Landing", "Redes", "FAQ", "Gacetilla", "Difusión", "SEO", "Alianzas"],
-      },
-      {
-        index: "04",
-        label: "Artist experience",
-        details: ["Soporte", "Guías", "Asistencia", "Revisión", "Preadmisión"],
-      },
-      {
-        index: "05",
-        label: "Jury",
-        details: ["Búsqueda", "Disponibilidad", "Contratación", "Criterios", "Ranking", "Soporte", "Adendas"],
-      },
-      {
-        index: "06",
-        label: "Operations",
-        details: ["Cliente", "Kanban", "Responsables", "Dependencias", "Legales", "Cronograma", "Documentación", "Reporting"],
-      },
-    ],
+    summary: "Bandadas está operando una convocatoria real: plataforma, artistas, soporte, jurado, comunicación y proceso.",
+    capabilities: ["Open call", "Platform", "Artists + support", "Jury", "Communication", "Operations"],
     verifiedFacts: [
-      { value: "3", label: "Jurors coordinated" },
-      { value: "20+", label: "Applications reviewed during support" },
+      { value: "5", label: "Jurors coordinated" },
+      { value: "100+", label: "Applications received" },
       { value: "STAGE → PROD", label: "Deployment flow" },
       { value: "END-TO-END", label: "QA" },
     ],
     evidence: [
-      { index: "01", title: "GES landing", ratio: "16:10", caption: "Convocatoria diseñada y desplegada." },
-      { index: "02", title: "Application flow", ratio: "4:3", caption: "Formulario, validaciones y flujo de postulación." },
+      { index: "01", title: "GES landing", ratio: "2:1", caption: "Banner oficial de la convocatoria de sitio específico.", href: "https://premio-ges.bandadas.com" },
+      { index: "02", title: "Application flow", ratio: "1:1", caption: "Formulario real: identificación de la convocatoria y datos personales." },
       { index: "03", title: "Communication", ratio: "4:5", caption: "Identidad y sistema de difusión del premio." },
     ],
     progressNote:
       "El proceso de selección continúa en curso. No se presentan todavía resultados finales.",
+    closing: "One partner. The whole process.",
   },
 } satisfies StatusedContent<GesCaseContent>;

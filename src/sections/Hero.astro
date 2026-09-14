@@ -22,7 +22,7 @@ const { territory, prize } = Astro.props;
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__meta">
     <p>{territory.signature}</p>
-    <p>Private proposal · 2027</p>
+    <p>Private proposal · Site-specific · 2027</p>
   </div>
 
   <div class="hero__title">
@@ -52,7 +52,7 @@ const { territory, prize } = Astro.props;
   <div class="hero__prize" aria-label="Propuesta a desarrollar en el próximo capítulo">
     <span>Next</span>
     <p>{prize.name}</p>
-    <strong>2027</strong>
+    <strong>Site-specific</strong>
   </div>
 </section>
 
@@ -76,6 +76,11 @@ const { territory, prize } = Astro.props;
     border-block-end: 1px solid var(--color-fg-primary);
   }
 
+  .hero > *,
+  .hero__meta p {
+    min-width: 0;
+  }
+
   .hero__meta p,
   .hero__eyebrow,
   .hero__prize span {
@@ -89,8 +94,10 @@ const { territory, prize } = Astro.props;
   }
 
   .hero__meta p:last-child {
+    max-width: 18ch;
     color: var(--color-fg-muted);
     text-align: end;
+    overflow-wrap: anywhere;
   }
 
   .hero__title {
@@ -176,6 +183,8 @@ const { territory, prize } = Astro.props;
       grid-column: 1 / 7;
       grid-row: 2;
     }
+
+    .hero__meta p:last-child { max-width: none; }
 
     .hero__visual {
       grid-column: 5 / -1;

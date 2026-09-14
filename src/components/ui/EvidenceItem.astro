@@ -5,8 +5,11 @@ interface Props extends GesEvidence {
   asset?: ResponsiveImage;
 }
 
-const { index, title, ratio, caption, asset } = Astro.props;
+const { index, title, ratio, caption, asset, href } = Astro.props;
+const Frame = href ? "a" : "div";
 const ratios: Record<GesEvidence["ratio"], string> = {
+  "1:1": "1 / 1",
+  "2:1": "2 / 1",
   "4:5": "4 / 5",
   "4:3": "4 / 3",
   "16:10": "16 / 10",
@@ -14,7 +17,7 @@ const ratios: Record<GesEvidence["ratio"], string> = {
 ---
 
 <figure class="evidence" style={`--evidence-ratio: ${ratios[ratio]}; --image-position: ${asset?.objectPosition ?? "50% 50%"}; --image-position-desktop: ${asset?.objectPositionDesktop ?? asset?.objectPosition ?? "50% 50%"}`}>
-  <div class="evidence__frame">
+  <Frame class="evidence__frame" href={href} target={href ? "_blank" : undefined} rel={href ? "noreferrer" : undefined}>
     {
       asset ? (
         <img
@@ -36,7 +39,7 @@ const ratios: Record<GesEvidence["ratio"], string> = {
         </div>
       )
     }
-  </div>
+  </Frame>
   <figcaption>
     <span>{index}</span>
     <span>
@@ -57,12 +60,17 @@ const ratios: Record<GesEvidence["ratio"], string> = {
     overflow: hidden;
     aspect-ratio: var(--evidence-ratio);
     border: 1px solid currentColor;
+    color: inherit;
     background:
       linear-gradient(color-mix(in srgb, currentColor 16%, transparent) 1px, transparent 1px),
       linear-gradient(90deg, color-mix(in srgb, currentColor 16%, transparent) 1px, transparent 1px),
       var(--color-bg-primary);
     background-size: 2rem 2rem;
   }
+
+  a.evidence__frame { display: block; }
+
+  a.evidence__frame:focus-visible { outline-offset: 4px; }
 
   .evidence__frame::before,
   .evidence__frame::after {

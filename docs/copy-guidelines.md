@@ -31,7 +31,7 @@ Precisa, cultural y segura. Premium significa elegir bien las palabras, no volve
 - No rotular cada hecho confirmado.
 - Partnership: `POTENTIAL PARTNERSHIP` o `VINCULACIÓN PROPUESTA`.
 - Roadmap: `PROPOSED TIMELINE`.
-- Aplicaciones: `WHAT COULD ART BECOME?` + cuerpo condicional.
+- Premio y obra site-specific: `PROPOSED` visible o lenguaje condicional.
 - GES: `CASE IN PROGRESS` siempre visible.
 
 ## Palabras a evitar
@@ -45,7 +45,7 @@ No usar “revolucionar”, “disruptivo”, “ecosistema 360”, “experienc
 | “Una experiencia innovadora que revoluciona el arte.” | “Una convocatoria para interpretar el universo Skinko.” |
 | “Una alianza con el museo.” | “Proponemos explorar una vinculación con el museo.” |
 | “Bandadas hizo el Premio GES.” | “Bandadas está operando el Premio GES 2026. El proceso sigue en curso.” |
-| “La obra vivirá en packaging y producto.” | “La cápsula podría extenderse a packaging, producto o espacio.” |
+| “La obra va a ser permanente.” | “La obra se concibe para pertenecer conceptualmente a ese espacio.” |
 | “Solución 360.” | “Estrategia, tecnología, comunicación y operación en un mismo proceso.” |
 
 ## Checklist editorial
@@ -56,4 +56,3 @@ No usar “revolucionar”, “disruptivo”, “ecosistema 360”, “experienc
 - ¿El claim tiene evidencia?
 - ¿Puede quitarse una frase sin perder información?
 - ¿Skinko aparece antes que Bandadas en la progresión?
-
