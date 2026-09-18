@@ -1,10 +1,10 @@
 ---
 import type { ClosingContent } from "@/schemas/skinko";
-interface Props { closing: ClosingContent }
-const { closing } = Astro.props;
+interface Props { closing: ClosingContent; copy?: { meta: string } }
+const { closing, copy } = Astro.props;
 ---
 <section id="closing" class="closing" aria-labelledby="closing-title">
-  <div class="meta"><p>{closing.signature}</p><p>Private proposal · 2027</p></div>
+  <div class="meta"><p>{closing.signature}</p><p>{copy?.meta ?? "Private proposal · 2027"}</p></div>
   <p class="territory">{closing.territory}</p><h2 id="closing-title">{closing.answer}</h2>
   <div class="prize"><p>{closing.prize}</p><p>{closing.descriptor}</p></div>
   <p class="invitation">{closing.invitation}</p>

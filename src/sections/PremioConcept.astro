@@ -3,11 +3,11 @@ import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import SectionLabel from "@/components/ui/SectionLabel.astro";
 import StatusBadge from "@/components/ui/StatusBadge.astro";
 import type { ContentStatus, PrizeConcept } from "@/schemas/skinko";
-interface Props { status: ContentStatus; concept: PrizeConcept }
-const { status, concept } = Astro.props;
+interface Props { status: ContentStatus; concept: PrizeConcept; copy?: { label: string; status: string } }
+const { status, concept, copy } = Astro.props;
 ---
 <section id="premio" class="premio" aria-labelledby="premio-title" data-status={status}>
-  <header><SectionLabel index="04" label="The site-specific proposal" /><StatusBadge {status} label="Propuesta 2027" /></header>
+  <header><SectionLabel index="04" label={copy?.label ?? "The site-specific proposal"} /><StatusBadge {status} label={copy?.status ?? "Propuesta 2027"} /></header>
   <EditorialHeading id="premio-title" level="h2" size="display-xl">{concept.displayLines.map((line) => <span>{line}</span>)}</EditorialHeading>
   <p class="lead">{concept.summary}</p>
   <div class="definition"><p>{concept.definition}</p><ul>{concept.principles.map((item) => <li>{item}</li>)}</ul></div>

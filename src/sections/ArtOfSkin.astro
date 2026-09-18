@@ -7,26 +7,25 @@ import type { ArtExperience } from "@/schemas/skinko";
 
 interface Props {
   experiences: ArtExperience[];
+  copy?: { label: string; heading: string; first: string; second: string; closing: string };
 }
 
-const { experiences } = Astro.props;
+const { experiences, copy } = Astro.props;
 const assets = [skinkoImages.livingSculptures, skinkoImages.becomeTheArtist, skinkoImages.masterpiece];
 ---
 
 <section id="art-of-skin" class="art-of-skin" aria-labelledby="art-of-skin-title">
   <div class="art-of-skin__intro">
-    <SectionLabel index="02" label="A territory already opened" />
+    <SectionLabel index="02" label={copy?.label ?? "A territory already opened"} />
     <EditorialHeading id="art-of-skin-title" level="h2" size="display-lg">
-      Beauty, staged as art.
+      {copy?.heading ?? "Beauty, staged as art."}
     </EditorialHeading>
     <div class="art-of-skin__copy">
       <p>
-        Para la apertura de Galerías Pacífico, SKINKO concibió el local como una
-        galería contemporánea de skincare.
+        {copy?.first ?? "Para la apertura de Galerías Pacífico, SKINKO concibió el local como una galería contemporánea de skincare."}
       </p>
       <p>
-        Producto, cuerpo, arquitectura, música y participación formaron parte de
-        un mismo recorrido: <em>THE ART OF SKIN.</em>
+        {copy?.second ?? "Producto, cuerpo, arquitectura, música y participación formaron parte de un mismo recorrido:"} <em>THE ART OF SKIN.</em>
       </p>
     </div>
   </div>
@@ -48,8 +47,7 @@ const assets = [skinkoImages.livingSculptures, skinkoImages.becomeTheArtist, ski
   </div>
 
   <p class="art-of-skin__closing">
-    SKINKO ya convirtió skincare, espacio y participación en una experiencia artística.
-    Bandadas propone profundizar esa dirección.
+    {copy?.closing ?? "SKINKO ya convirtió skincare, espacio y participación en una experiencia artística. Bandadas propone profundizar esa dirección."}
   </p>
 </section>
 

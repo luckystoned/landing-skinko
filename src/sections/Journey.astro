@@ -3,14 +3,14 @@ import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import SectionLabel from "@/components/ui/SectionLabel.astro";
 import StatusBadge from "@/components/ui/StatusBadge.astro";
 import type { ContentStatus, JourneyPhase } from "@/schemas/skinko";
-interface Props { status: ContentStatus; phases: JourneyPhase[] }
-const { status, phases } = Astro.props;
+interface Props { status: ContentStatus; phases: JourneyPhase[]; copy?: { label: string; heading: string; asideLabel: string; aside: string } }
+const { status, phases, copy } = Astro.props;
 ---
 <section id="journey" class="journey" aria-labelledby="journey-title" data-status={status}>
-  <header><SectionLabel index="06" label="The journey" /><StatusBadge {status} label="Proceso propuesto" /></header>
-  <EditorialHeading id="journey-title" level="h2" size="display-lg">From a real place to a real artwork.</EditorialHeading>
+  <header><SectionLabel index="06" label={copy?.label ?? "The journey"} /><StatusBadge {status} label="Proceso propuesto" /></header>
+  <EditorialHeading id="journey-title" level="h2" size="display-lg">{copy?.heading ?? "From a real place to a real artwork."}</EditorialHeading>
   <ol>{phases.map((phase) => <li><span>{String(phase.phase).padStart(2,"0")}</span><h3>{phase.label}</h3><p>{phase.description}</p></li>)}</ol>
-  <aside><strong>Optional · Proposed</strong><p>También se podría explorar la participación de una institución cultural como partner de una instancia de jurado o desarrollo.</p></aside>
+  <aside><strong>{copy?.asideLabel ?? "Optional · Proposed"}</strong><p>{copy?.aside ?? "También se podría explorar la participación de una institución cultural como partner de una instancia de jurado o desarrollo."}</p></aside>
 </section>
 <style>
   .journey{padding-inline:var(--space-gutter)}header{display:flex;justify-content:space-between;gap:1rem}.journey :global(.editorial-heading){max-width:13ch;margin:clamp(3rem,8vw,7rem) 0}

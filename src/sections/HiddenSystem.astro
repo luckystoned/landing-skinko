@@ -4,9 +4,10 @@ import type { HiddenSystemContent } from "@/schemas/skinko";
 
 interface Props {
   system: HiddenSystemContent;
+  copy?: { label: string; record: string; archive: string; simple: string };
 }
 
-const { system } = Astro.props;
+const { system, copy } = Astro.props;
 const startTransforms = [
   ["220%", "62%"],
   ["110%", "62%"],
@@ -24,15 +25,15 @@ const startTransforms = [
 <section id="hidden-system" class="hidden-system" aria-labelledby="hidden-title">
   <div class="hidden-system__stage">
     <header class="hidden-system__header">
-      <SectionLabel index="08" label="The Hidden System" inverse />
-      <p>Exploded museum archive · operational record</p>
+      <SectionLabel index="08" label={copy?.label ?? "The Hidden System"} inverse />
+      <p>{copy?.record ?? "Exploded museum archive · operational record"}</p>
     </header>
 
     <div class="hidden-system__archive">
       <div class="hidden-system__surface">
-        <span>Archive record · 00</span>
+        <span>{copy?.archive ?? "Archive record · 00"}</span>
         <h2 id="hidden-title">{system.surface}</h2>
-        <span>Apparently simple</span>
+        <span>{copy?.simple ?? "Apparently simple"}</span>
       </div>
 
       <ol class="hidden-system__layers">

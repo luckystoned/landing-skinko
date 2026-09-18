@@ -3,14 +3,14 @@ import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import SectionLabel from "@/components/ui/SectionLabel.astro";
 import type { BandadasValueContent } from "@/schemas/skinko";
 
-interface Props { value: BandadasValueContent }
-const { value } = Astro.props;
+interface Props { value: BandadasValueContent; copy?: { label: string; evidence: string; system: string } }
+const { value, copy } = Astro.props;
 ---
 
 <section id="bandadas-value" class="bandadas" aria-labelledby="bandadas-value-title">
   <header class="bandadas__header">
-    <SectionLabel index="10" label="Why Bandadas" inverse />
-    <p>Evidence → capability</p>
+    <SectionLabel index="10" label={copy?.label ?? "Why Bandadas"} inverse />
+    <p>{copy?.evidence ?? "Evidence → capability"}</p>
   </header>
   <div class="bandadas__intro">
     <EditorialHeading id="bandadas-value-title" level="h2" size="display-lg">{value.headline}</EditorialHeading>
@@ -22,7 +22,7 @@ const { value } = Astro.props;
     ))}
   </ol>
   <div class="bandadas__continuity">
-    <p>One system</p>
+    <p>{copy?.system ?? "One system"}</p>
     <ol aria-label="Proceso acompañado por Bandadas">
       {value.process.map((stage) => <li>{stage}</li>)}
     </ol>

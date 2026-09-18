@@ -5,18 +5,20 @@ import SectionLabel from "@/components/ui/SectionLabel.astro";
 import StatusBadge from "@/components/ui/StatusBadge.astro";
 import { gesCase } from "@/data/skinko/ges-case";
 import { gesImages } from "@/data/skinko/assets";
-const { data: content, status } = gesCase;
+import type { ContentStatus, GesCaseContent } from "@/schemas/skinko";
+interface Props { content?: GesCaseContent; status?: ContentStatus; copy?: { label: string; status: string; closing: string; evidenceStatuses?: readonly string[] } }
+const { content = gesCase.data, status = gesCase.status, copy } = Astro.props;
 const assets = [gesImages.landing, gesImages.flow, gesImages.communication];
 ---
 <section id="ges-case" class="ges" aria-labelledby="ges-title" data-status={status}>
-  <header><SectionLabel index="09" label="Proof of execution" /><StatusBadge {status} label="Case in progress" /></header>
+  <header><SectionLabel index="09" label={copy?.label ?? "Proof of execution"} /><StatusBadge {status} label={copy?.status ?? "Case in progress"} /></header>
   <EditorialHeading id="ges-title" level="h2" size="display-lg">{content.headline}</EditorialHeading>
   <p class="summary">{content.summary}</p>
   <ul class="capabilities">{content.capabilities.map((item) => <li>{item}</li>)}</ul>
   <dl class="facts">{content.verifiedFacts.map((fact) => <div><dt>{fact.value}</dt><dd>{fact.label}</dd></div>)}</dl>
-  <div class="evidence">{content.evidence.map((item,index) => <EvidenceItem {...item} asset={assets[index]} />)}</div>
+  <div class="evidence">{content.evidence.map((item,index) => <EvidenceItem {...item} asset={assets[index]} statusLabel={copy?.evidenceStatuses?.[index]} />)}</div>
   <p class="progress">{content.progressNote}</p>
-  <div class="closing"><strong>{content.closing}</strong><p>Bandadas diseña y opera el sistema completo detrás de la convocatoria.</p></div>
+  <div class="closing"><strong>{content.closing}</strong><p>{copy?.closing ?? "Bandadas diseña y opera el sistema completo detrás de la convocatoria."}</p></div>
 </section>
 <style>
   .ges{padding-inline:var(--space-gutter);background:var(--color-bg-secondary)}header{display:flex;justify-content:space-between;gap:1rem}.ges :global(.editorial-heading){max-width:13ch;margin:clamp(3rem,8vw,7rem) 0 2rem}.summary{max-width:40rem;font-size:var(--text-body-lg)}.capabilities{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:3rem 0;padding:1.5rem 0;border-block:1px solid var(--color-border);list-style:none;text-transform:uppercase;font:600 var(--text-eyebrow)/1.3 var(--font-utility)}.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--color-border);border:1px solid var(--color-border)}.facts div{padding:1.5rem;background:var(--color-bg-secondary)}dt{font:400 clamp(1.8rem,4vw,3.5rem)/1 var(--font-display)}dd{margin:.5rem 0 0;font-size:var(--text-caption);text-transform:uppercase}.evidence{display:grid;gap:3rem;margin-block:clamp(4rem,10vw,8rem)}.progress{max-width:36rem}.closing{margin-block-start:4rem;padding-block-start:2rem;border-block-start:1px solid var(--color-fg-primary)}.closing strong{font:400 clamp(2.2rem,6vw,5rem)/.95 var(--font-display)}.closing p{margin:1rem 0 0}@media(min-width:48rem){.facts{grid-template-columns:repeat(4,1fr)}.evidence{grid-template-columns:repeat(3,1fr);align-items:start}.evidence>*:nth-child(2){margin-block-start:5rem}}

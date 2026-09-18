@@ -3,7 +3,7 @@ export type ContentStatus = (typeof contentStatuses)[keyof typeof contentStatuse
 export interface StatusedContent<T> { status: ContentStatus; data: T }
 export interface ResponsiveImage { src: string; srcset: string; sizes: string; alt: string; width: number; height: number; objectPosition?: string; objectPositionDesktop?: string; statusLabel?: string }
 export interface ArtExperience { index: string; name: string; description: string; ratio: "4:5" | "3:2" | "16:9" }
-export interface OpportunityContent { statement: string; shifts: Array<{ from: string; to: string }>; closing: string }
+export interface OpportunityContent { statement: string; description?: string; shifts: Array<{ from: string; to: string }>; value?: string; closing: string }
 export interface PrizeConcept { name: string; displayLines: string[]; summary: string; definition: string; principles: string[]; formula: string[]; processSummary: string }
 export interface SiteSpecificReason { label: string; description: string }
 export interface SiteSpecificContent { reasons: SiteSpecificReason[]; positioning: string; closing: string }

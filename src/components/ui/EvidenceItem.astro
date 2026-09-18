@@ -3,9 +3,10 @@ import type { GesEvidence, ResponsiveImage } from "@/schemas/skinko";
 
 interface Props extends GesEvidence {
   asset?: ResponsiveImage;
+  statusLabel?: string;
 }
 
-const { index, title, ratio, caption, asset, href } = Astro.props;
+const { index, title, ratio, caption, asset, href, statusLabel } = Astro.props;
 const Frame = href ? "a" : "div";
 const ratios: Record<GesEvidence["ratio"], string> = {
   "1:1": "1 / 1",
@@ -45,7 +46,7 @@ const ratios: Record<GesEvidence["ratio"], string> = {
     <span>
       <strong>{title}</strong>
       <span>{caption}</span>
-      <span>{asset?.statusLabel ?? "Case in progress · real evidence pending"}</span>
+      <span>{statusLabel ?? asset?.statusLabel ?? "Case in progress · real evidence pending"}</span>
     </span>
   </figcaption>
 </figure>

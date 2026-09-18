@@ -2,14 +2,14 @@
 import EditorialHeading from "@/components/ui/EditorialHeading.astro";
 import SectionLabel from "@/components/ui/SectionLabel.astro";
 import type { SiteSpecificContent } from "@/schemas/skinko";
-interface Props { content: SiteSpecificContent }
-const { content } = Astro.props;
+interface Props { content: SiteSpecificContent; copy?: { label: string; heading: string; culture: string } }
+const { content, copy } = Astro.props;
 ---
 <section id="why-site-specific" class="why" aria-labelledby="why-title">
-  <SectionLabel index="05" label="Why site-specific" />
-  <EditorialHeading id="why-title" level="h2" size="display-lg">Why this work—and not simply any artwork?</EditorialHeading>
+  <SectionLabel index="05" label={copy?.label ?? "Why site-specific"} />
+  <EditorialHeading id="why-title" level="h2" size="display-lg">{copy?.heading ?? "Why this work—and not simply any artwork?"}</EditorialHeading>
   <ol>{content.reasons.map((reason, index) => <li><span>{String(index + 1).padStart(2,"0")}</span><h3>{reason.label}</h3><p>{reason.description}</p></li>)}</ol>
-  <div class="positioning"><p>{content.positioning}</p><strong>Cultura de marca.</strong></div>
+  <div class="positioning"><p>{content.positioning}</p><strong>{copy?.culture ?? "Cultura de marca."}</strong></div>
   <p class="closing">{content.closing}</p>
 </section>
 <style>

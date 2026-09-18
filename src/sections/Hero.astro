@@ -14,15 +14,23 @@ interface Props {
     name: string;
     summary: string;
   };
+  copy?: {
+    meta: string;
+    visualTitle: string;
+    visualCaption: string;
+    next: string;
+    siteSpecific: string;
+    prizeAria: string;
+  };
 }
 
-const { territory, prize } = Astro.props;
+const { territory, prize, copy } = Astro.props;
 ---
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__meta">
     <p>{territory.signature}</p>
-    <p>Private proposal · Site-specific · 2027</p>
+    <p>{copy?.meta ?? "Private proposal · Site-specific · 2027"}</p>
   </div>
 
   <div class="hero__title">
@@ -37,9 +45,9 @@ const { territory, prize } = Astro.props;
   <div class="hero__visual">
     <Figure
       index="00"
-      title="The Art of Skin — master visual"
+      title={copy?.visualTitle ?? "The Art of Skin — master visual"}
       ratio="4:5"
-      caption="Visual conceptual provisto · composición preparada para fotografía vertical."
+      caption={copy?.visualCaption ?? "Visual conceptual provisto · composición preparada para fotografía vertical."}
       asset={skinkoImages.hero}
       priority
     />
@@ -49,10 +57,10 @@ const { territory, prize } = Astro.props;
     <p>{territory.question}</p>
   </div>
 
-  <div class="hero__prize" aria-label="Propuesta a desarrollar en el próximo capítulo">
-    <span>Next</span>
+  <div class="hero__prize" aria-label={copy?.prizeAria ?? "Propuesta a desarrollar en el próximo capítulo"}>
+    <span>{copy?.next ?? "Next"}</span>
     <p>{prize.name}</p>
-    <strong>Site-specific</strong>
+    <strong>{copy?.siteSpecific ?? "Site-specific"}</strong>
   </div>
 </section>
 
@@ -150,7 +158,7 @@ const { territory, prize } = Astro.props;
   .hero__prize {
     display: grid;
     grid-column: 1 / -1;
-    grid-template-columns: 2.5rem 1fr auto;
+    grid-template-columns: max-content minmax(0, 1fr);
     gap: 0.75rem;
     align-items: end;
     margin-block-start: 1rem;
@@ -168,7 +176,19 @@ const { territory, prize } = Astro.props;
   }
 
   .hero__prize strong {
+    grid-column: 2;
     font-weight: 500;
+    text-align: end;
+  }
+
+  @media (min-width: 36rem) {
+    .hero__prize {
+      grid-template-columns: max-content minmax(0, 1fr) auto;
+    }
+
+    .hero__prize strong {
+      grid-column: auto;
+    }
   }
 
   @media (min-width: 48rem) {
