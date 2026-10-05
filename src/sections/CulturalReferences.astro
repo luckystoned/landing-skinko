@@ -1,0 +1,14 @@
+---
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import type { ChapterContent } from "@/schemas/chapter";
+interface Props { content: ChapterContent["references"] }
+const { content } = Astro.props;
+---
+<section class="chapter-references" aria-labelledby="references-heading" data-status={content.status}>
+  <SectionLabel index="04" label={content.label} />
+  <div class="chapter-intro"><h2 id="references-heading">{content.title}</h2><p>{content.description}</p></div>
+  <div class="chapter-reference-list">
+    {content.items.map((item) => <article><p class="chapter-eyebrow">{item.location}</p><h3>{item.name}</h3><p>{item.whatTheyDid}</p><p class="chapter-reference-value">{item.brandValue}</p><a class="chapter-link" href={item.sourceUrl} target="_blank" rel="noreferrer">{content.sourceLabel}: {item.sourceLabel}<span class="sr-only"> (abre en una nueva pestaña)</span><span aria-hidden="true"> ↗</span></a></article>)}
+  </div>
+  <p class="chapter-note">{content.note}</p>
+</section>

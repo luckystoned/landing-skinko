@@ -9,17 +9,16 @@ export interface PageMetadata {
 export const homeMetadata: PageMetadata = {
   title: "Premio SKINKO a las Artes 2027 | Propuesta de Bandadas",
   description:
-    "Presentación comercial privada de Bandadas para crear una obra site-specific en un espacio de SKINKO.",
+    "Presentación comercial privada de Bandadas para crear una obra de sitio específico en un espacio de SKINKO.",
   canonicalPath: "/",
   ogType: "website",
   twitterCard: "summary",
 };
 
 export const nuevaMetadata: PageMetadata = {
-  title: "Premio SKINKO a las Artes 2027 | Nueva propuesta de Bandadas",
-  description:
-    "Versión alternativa de la presentación comercial privada de Bandadas para crear una obra de sitio específico en un espacio de SKINKO.",
-  canonicalPath: "/nueva",
+  title: "SKINKO × arte | El próximo capítulo de The Art of Skin",
+  description: "Propuesta privada para conectar la identidad de SKINKO, los artistas y su comunidad a través de una primera experiencia artística.",
+  canonicalPath: "/nueva/",
   ogType: "website",
   twitterCard: "summary",
 };

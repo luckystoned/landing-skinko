@@ -1,0 +1,28 @@
+---
+import type { ChapterContent } from "@/schemas/chapter";
+interface Props { content: ChapterContent["hero"]; navigation: ChapterContent["navigation"] }
+const { content, navigation } = Astro.props;
+---
+<section class="chapter-hero" aria-labelledby="chapter-title" data-status={content.status}>
+  <header class="chapter-topline">
+    <p class="chapter-brand">{content.brand}</p>
+    <a href="/">{navigation.comparison} <span aria-hidden="true">↗</span></a>
+  </header>
+  <p class="chapter-eyebrow">{navigation.meta}</p>
+  <div class="chapter-hero-heading">
+    <h1 id="chapter-title">{content.lines.map((line) => <span>{line}</span>)}</h1>
+    <div class="chapter-hero-intro">
+      <p class="chapter-eyebrow">{content.label}</p>
+      <p class="chapter-hero-subtitle">{content.title}</p>
+      <p>{content.description}</p>
+      <a class="chapter-link" href="#oportunidad">{navigation.explore} <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <div class="chapter-hero-bottom">
+    <p class="chapter-question">{content.question}</p>
+    <figure>
+      <img src={content.image.src} srcset={content.image.srcset} sizes={content.image.sizes} width={content.image.width} height={content.image.height} alt={content.image.alt} loading="eager" fetchpriority="high" decoding="async" />
+      <figcaption>{content.caption}</figcaption>
+    </figure>
+  </div>
+</section>

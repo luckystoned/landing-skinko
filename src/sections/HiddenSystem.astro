@@ -5,9 +5,11 @@ import type { HiddenSystemContent } from "@/schemas/skinko";
 interface Props {
   system: HiddenSystemContent;
   copy?: { label: string; record: string; archive: string; simple: string };
+  index?: string;
+  tone?: "default" | "violet";
 }
 
-const { system, copy } = Astro.props;
+const { system, copy, index = "08", tone = "default" } = Astro.props;
 const startTransforms = [
   ["220%", "62%"],
   ["110%", "62%"],
@@ -22,10 +24,10 @@ const startTransforms = [
 ] as const;
 ---
 
-<section id="hidden-system" class="hidden-system" aria-labelledby="hidden-title">
+<section id="hidden-system" class:list={["hidden-system", { "hidden-system--violet": tone === "violet" }]} aria-labelledby="hidden-title">
   <div class="hidden-system__stage">
     <header class="hidden-system__header">
-      <SectionLabel index="08" label={copy?.label ?? "The Hidden System"} inverse />
+      <SectionLabel {index} label={copy?.label ?? "The Hidden System"} inverse />
       <p>{copy?.record ?? "Exploded museum archive · operational record"}</p>
     </header>
 
@@ -63,6 +65,22 @@ const startTransforms = [
     background: var(--color-fg-primary);
   }
 
+  .hidden-system--violet {
+    --color-fg-primary: var(--chapter-lilac, #e5def0);
+    --color-on-dark: var(--chapter-ink, #27233d);
+    --hidden-system-muted: var(--chapter-muted, #5f5969);
+  }
+
+  .hidden-system--violet :global(.section-label) {
+    color: var(--hidden-system-muted);
+  }
+
+  .hidden-system--violet .hidden-system__surface h2 {
+    max-width: none;
+    font-size: clamp(2.75rem, 4.5vw, 4.5rem);
+    overflow-wrap: anywhere;
+  }
+
   .hidden-system__header {
     display: flex;
     align-items: center;
@@ -79,7 +97,7 @@ const startTransforms = [
     letter-spacing: 0.09em;
     text-align: end;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--color-on-dark) 58%, transparent);
+    color: var(--hidden-system-muted, color-mix(in srgb, var(--color-on-dark) 58%, transparent));
   }
 
   .hidden-system__archive {
@@ -113,7 +131,7 @@ const startTransforms = [
 
   .hidden-system__surface span:last-child {
     align-self: end;
-    color: color-mix(in srgb, var(--color-on-dark) 58%, transparent);
+    color: var(--hidden-system-muted, color-mix(in srgb, var(--color-on-dark) 58%, transparent));
   }
 
   .hidden-system__surface h2 {
@@ -151,7 +169,7 @@ const startTransforms = [
   .hidden-system__layers span:last-child {
     grid-column: 2;
     align-self: end;
-    color: color-mix(in srgb, var(--color-on-dark) 58%, transparent);
+    color: var(--hidden-system-muted, color-mix(in srgb, var(--color-on-dark) 58%, transparent));
     text-transform: none;
   }
 

@@ -1,0 +1,111 @@
+import { contentStatuses } from "@/schemas/skinko";
+import type { ChapterContent } from "@/schemas/chapter";
+import { gesImages, skinkoImages } from "./assets";
+import { nuevaBenchmarks } from "./nueva";
+
+export const chapterProposal = {
+  navigation: {
+    comparison: "Comparar con la versión anterior",
+    explore: "Explorar la propuesta",
+    meta: "Presentación privada · Propuesta para conversar",
+  },
+  hero: {
+    status: contentStatuses.proposed,
+    statusLabel: "Un próximo capítulo · Propuesta",
+    label: "SKINKO × arte",
+    brand: "SKINKO",
+    lines: ["The Art", "of Skin"],
+    title: "Un próximo capítulo para SKINKO.",
+    description: "Una propuesta para hacer del arte un vínculo vivo entre la marca, los artistas y su comunidad.",
+    question: "¿Cómo podría el arte fortalecer lo que hace reconocible a SKINKO?",
+    image: {
+      ...skinkoImages.becomeTheArtist,
+      sizes: "(max-width: 767px) calc(100vw - 2rem), (max-width: 1599px) 60vw, 960px",
+      alt: "Visual conceptual de una visitante participando en una experiencia artística interactiva de SKINKO",
+    },
+    caption: "Become the Artist · Visual conceptual provisto; no es un registro documental.",
+  },
+  opportunity: {
+    status: contentStatuses.proposed,
+    statusLabel: "Valor que proponemos construir",
+    label: "Una búsqueda que puede crecer",
+    title: "Más historias. Más encuentros. Más SKINKO.",
+    introduction: "The Art of Skin ya propone un encuentro entre belleza, arte y participación. El próximo capítulo podría darle continuidad a esa búsqueda y sumarse a la comunicación de la marca.",
+    description: "El arte puede abrir nuevas formas de reconocer a SKINKO, acercarse a su universo y compartirlo.",
+    items: [
+      { title: "Identidad", description: "Desarrollar una expresión propia de The Art of Skin, reconocible más allá de una activación.", example: "Una pregunta creativa que nazca del universo de SKINKO." },
+      { title: "Contenido", description: "Compartir las miradas de los artistas y las historias que aparecen durante la creación.", example: "Entrevistas, registros de proceso y piezas para los canales de la marca." },
+      { title: "Comunidad", description: "Generar ocasiones para descubrir, participar y conversar alrededor del arte y la belleza.", example: "Encuentros con artistas y una experiencia de presentación en el espacio." },
+      { title: "Vínculos", description: "Abrir conversaciones con la escena cultural y nuevos interlocutores para SKINKO.", example: "Una historia para acercar a referentes, medios y posibles colaboradores." },
+    ],
+    closing: "Una marca que también se descubre, se vive y se comparte.",
+  },
+  experience: {
+    status: contentStatuses.proposed,
+    statusLabel: "Primera experiencia propuesta",
+    label: "Una idea para empezar",
+    title: "Un lugar. Un artista. Una historia de SKINKO.",
+    description: "Proponemos una convocatoria artística para crear una obra en diálogo con un espacio de SKINKO. Desde la primera invitación hasta su presentación, el proceso podría convertirse en una historia compartida con su comunidad.",
+    items: [
+      { title: "Nace de la marca", description: "Una pregunta sobre belleza, cuidado o percepción, construida junto al equipo de SKINKO, daría origen a la convocatoria." },
+      { title: "Toma forma en un lugar", description: "La obra se concebiría para el espacio elegido: su luz, sus materiales y la forma en que las personas lo recorren." },
+      { title: "Se abre a las personas", description: "La creación podría acompañarse con contenidos y encuentros que acerquen el trabajo del artista a la comunidad." },
+    ],
+    openLabel: "Para definir juntos",
+    openDecisions: ["Nombre y formato", "Espacio y tema", "Criterios de selección", "Participación de la comunidad"],
+    culture: "También podría explorarse un diálogo con la cultura coreana, si acompaña la visión de SKINKO.",
+  },
+  journey: {
+    status: contentStatuses.proposed,
+    statusLabel: "Recorrido posible",
+    label: "La experiencia se construye en el camino",
+    title: "Antes, durante y después de la obra.",
+    description: "Tres momentos para acercar el arte a la comunidad de SKINKO. Los contenidos y encuentros se definirían según el alcance acordado.",
+    items: [
+      { title: "Invitar y descubrir", description: "Compartir una pregunta creativa y convocar artistas que aporten nuevas miradas al universo de SKINKO.", example: "Una invitación de marca + historias de los artistas." },
+      { title: "Crear y compartir", description: "Acompañar el desarrollo de la obra y abrir una ventana a los materiales, las ideas y las decisiones del proceso.", example: "Conversaciones + registros de creación + encuentros." },
+      { title: "Presentar y continuar", description: "Presentar la obra como una experiencia para la comunidad y dar continuidad a su historia en los canales de SKINKO.", example: "Una presentación en el espacio + contenidos para seguir compartiendo." },
+    ],
+  },
+  references: {
+    status: contentStatuses.confirmed,
+    statusLabel: "Referencias documentadas",
+    label: "Dos formas de conectar marca y arte",
+    title: "Un vínculo que toma forma.",
+    description: "Dos referencias para pensar cómo una obra puede conectar un lugar, una identidad y una historia. Cada marca encuentra su propia expresión.",
+    items: nuevaBenchmarks.filter((item) => ["Zivals × Martín Ron", "Bios Line × Arte Laguna"].includes(item.name)),
+    note: "Referencias de terceros; no son proyectos de Bandadas ni proyecciones de resultados para SKINKO.",
+    sourceLabel: "Ver fuente",
+  },
+  support: {
+    status: contentStatuses.caseInProgress,
+    statusLabel: "GES · Caso en curso",
+    label: "Un equipo para acompañar este capítulo",
+    title: "La visión de SKINKO. Un equipo para darle forma.",
+    description: "Bandadas propone articular el desarrollo artístico, la convocatoria y la operación junto al equipo de SKINKO, integrándose a su trabajo de marca, comunicación y producción.",
+    roles: [
+      { title: "SKINKO orienta", description: "Comparte su visión, define prioridades y participa en las decisiones de identidad, alcance y experiencia." },
+      { title: "Bandadas articula", description: "Conecta el concepto con los artistas, organiza la convocatoria y coordina el proceso con los equipos involucrados." },
+    ],
+    caseTitle: "Premio GES a las Artes 2026",
+    caseDescription: "Bandadas está operando una convocatoria para una obra de sitio específico: plataforma, acompañamiento a artistas, coordinación del jurado y comunicación.",
+    caseNote: "El proceso continúa en curso. Esta evidencia muestra trabajo realizado; no presenta resultados finales.",
+    image: { ...gesImages.landing, sizes: "(max-width: 767px) calc(100vw - 2rem), (max-width: 1599px) 45vw, 720px" },
+    href: "https://premio-ges.bandadas.com",
+    linkLabel: "Ver la convocatoria de GES",
+  },
+  nextSteps: {
+    status: contentStatuses.proposed,
+    statusLabel: "Próximos pasos propuestos",
+    label: "El próximo capítulo empieza con una conversación",
+    title: "¿Qué queremos que el arte cuente de SKINKO?",
+    description: "Definamos qué queremos expresar, a quién queremos acercarnos y qué primera experiencia podría hacerlo posible.",
+    items: [
+      { title: "Alinear la visión", description: "Objetivo de marca, comunidad y primera experiencia a explorar." },
+      { title: "Dar forma a la propuesta", description: "Concepto, espacio, alcance y responsabilidades de cada equipo." },
+      { title: "Acordar cómo avanzar", description: "Presupuesto, calendario y criterios para evaluar la experiencia, antes de ponerla en marcha." },
+    ],
+    closing: "Definamos juntos el próximo capítulo de The Art of Skin.",
+    signature: "Propuesta de Bandadas para SKINKO · Presentación privada",
+  },
+} satisfies ChapterContent;

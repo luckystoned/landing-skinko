@@ -1,0 +1,17 @@
+---
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import StatusBadge from "@/components/ui/StatusBadge.astro";
+import { contentStatuses } from "@/schemas/skinko";
+import type { ChapterContent } from "@/schemas/chapter";
+interface Props { content: ChapterContent["support"] }
+const { content } = Astro.props;
+---
+<section class="chapter-support" aria-labelledby="support-heading" data-status={contentStatuses.proposed}>
+  <SectionLabel index="05" label={content.label} />
+  <div class="chapter-intro"><h2 id="support-heading">{content.title}</h2><p>{content.description}</p></div>
+  <dl class="chapter-roles">{content.roles.map((role) => <div><dt>{role.title}</dt><dd>{role.description}</dd></div>)}</dl>
+  <article class="chapter-case" data-status={content.status}>
+    <figure><img src={content.image.src} srcset={content.image.srcset} sizes={content.image.sizes} width={content.image.width} height={content.image.height} alt={content.image.alt} loading="lazy" decoding="async" /></figure>
+    <div><StatusBadge status={content.status} label={content.statusLabel} /><h3>{content.caseTitle}</h3><p>{content.caseDescription}</p><p class="chapter-note">{content.caseNote}</p><a class="chapter-link" href={content.href} target="_blank" rel="noreferrer">{content.linkLabel}<span class="sr-only"> (abre en una nueva pestaña)</span><span aria-hidden="true"> ↗</span></a></div>
+  </article>
+</section>

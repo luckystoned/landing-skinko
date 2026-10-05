@@ -1,6 +1,5 @@
 ---
-import { proposal } from "@/data/skinko/proposal";
-import { benchmarks } from "@/data/skinko/benchmarks";
+import { nuevaBenchmarks, nuevaGesCase, nuevaProposal, nuevaUi } from "@/data/skinko/nueva";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { homeMetadata } from "@/seo/metadata";
 import { buildWebPageSchema } from "@/seo/schemas";
@@ -28,28 +27,40 @@ const schema = buildWebPageSchema({
 <BaseLayout metadata={homeMetadata} schema={schema}>
   <main id="content" class="mx-auto max-w-content">
     <Hero
-      territory={proposal.brandTerritory.data}
-      prize={proposal.prize.data}
+      territory={nuevaProposal.brandTerritory.data}
+      prize={nuevaProposal.prize.data}
+      copy={nuevaUi.hero}
     />
-    <ArtOfSkin experiences={proposal.artExperiences.data} />
+    <ArtOfSkin experiences={nuevaProposal.artExperiences.data} copy={nuevaUi.artOfSkin} />
     <Opportunity
-      status={proposal.opportunity.status}
-      opportunity={proposal.opportunity.data}
+      status={nuevaProposal.opportunity.status}
+      opportunity={nuevaProposal.opportunity.data}
+      copy={nuevaUi.opportunity}
     />
     <PremioConcept
-      status={proposal.prize.status}
-      concept={proposal.prize.data}
+      status={nuevaProposal.prize.status}
+      concept={nuevaProposal.prize.data}
+      copy={nuevaUi.prize}
     />
-    <WhySiteSpecific content={proposal.siteSpecific.data} />
+    <WhySiteSpecific content={nuevaProposal.siteSpecific.data} copy={nuevaUi.siteSpecific} />
     <Journey
-      status={proposal.journey.status}
-      phases={proposal.journey.data}
+      status={nuevaProposal.journey.status}
+      phases={nuevaProposal.journey.data}
+      copy={nuevaUi.journey}
     />
-    <Benchmarks {benchmarks} />
-    <HiddenSystem system={proposal.hiddenSystem.data} />
-    <GesCaseStudy />
-    <BandadasValue value={proposal.bandadasValue.data} />
-    <Roadmap status={proposal.roadmap.status} milestones={proposal.roadmap.data} />
-    <FinalCta closing={proposal.closing.data} />
+    <Benchmarks benchmarks={nuevaBenchmarks} copy={nuevaUi.benchmarks} />
+    <HiddenSystem system={nuevaProposal.hiddenSystem.data} copy={nuevaUi.hiddenSystem} />
+    <GesCaseStudy
+      content={nuevaGesCase.data}
+      status={nuevaGesCase.status}
+      copy={nuevaUi.ges}
+    />
+    <BandadasValue value={nuevaProposal.bandadasValue.data} copy={nuevaUi.bandadas} />
+    <Roadmap
+      status={nuevaProposal.roadmap.status}
+      milestones={nuevaProposal.roadmap.data}
+      copy={nuevaUi.roadmap}
+    />
+    <FinalCta closing={nuevaProposal.closing.data} copy={nuevaUi.closing} />
   </main>
 </BaseLayout>

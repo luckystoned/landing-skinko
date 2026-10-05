@@ -1,0 +1,16 @@
+---
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import StatusBadge from "@/components/ui/StatusBadge.astro";
+import type { ChapterContent } from "@/schemas/chapter";
+interface Props { content: ChapterContent["nextSteps"] }
+const { content } = Astro.props;
+---
+<section id="conversacion" class="chapter-next" aria-labelledby="next-heading" data-status={content.status}>
+  <SectionLabel index="07" label={content.label} inverse />
+  <h2 id="next-heading">{content.title}</h2>
+  <p class="chapter-next-intro">{content.description}</p>
+  <StatusBadge status={content.status} label={content.statusLabel} />
+  <ol class="chapter-columns">{content.items.map((item, i) => <li><span class="chapter-eyebrow" aria-hidden="true">0{i + 1}</span><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol>
+  <p class="chapter-pullquote">{content.closing}</p>
+  <footer>{content.signature}</footer>
+</section>

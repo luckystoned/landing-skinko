@@ -1,0 +1,22 @@
+---
+import SectionLabel from "@/components/ui/SectionLabel.astro";
+import StatusBadge from "@/components/ui/StatusBadge.astro";
+import type { ChapterContent } from "@/schemas/chapter";
+interface Props { content: ChapterContent["experience"] }
+const { content } = Astro.props;
+---
+<section id="experiencia" class="chapter-experience" aria-labelledby="experience-heading" data-status={content.status}>
+  <SectionLabel index="02" label={content.label} />
+  <div class="chapter-intro">
+    <h2 id="experience-heading">{content.title}</h2>
+    <div><StatusBadge status={content.status} label={content.statusLabel} /><p>{content.description}</p></div>
+  </div>
+  <ul class="chapter-columns">
+    {content.items.map((item) => <li><h3>{item.title}</h3><p>{item.description}</p></li>)}
+  </ul>
+  <div class="chapter-open">
+    <p class="chapter-eyebrow">{content.openLabel}</p>
+    <ul>{content.openDecisions.map((item) => <li>{item}</li>)}</ul>
+  </div>
+  <p class="chapter-culture">{content.culture}</p>
+</section>

@@ -1,0 +1,108 @@
+/* Scoped to the comparison route so the approved home keeps its visual system. */
+.chapter-page {
+  --chapter-ink: #27233d;
+  --chapter-lilac: #e5def0;
+  --chapter-muted: #5f5969;
+  max-width: 100rem;
+  margin-inline: auto;
+  color: var(--chapter-ink);
+}
+
+.chapter-page section { padding: clamp(4rem, 8vw, 8rem) var(--space-gutter); }
+.chapter-page p { margin: 0; }
+.chapter-page p + p { margin-block-start: 1.25rem; }
+.chapter-page h2 { max-width: 15ch; font-size: clamp(2.8rem, 5.4vw, 5.6rem); line-height: 1.03; }
+.chapter-page h3 { font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.08; }
+.chapter-page h2, .chapter-page h3 { margin: 0; }
+.chapter-page a { color: inherit; text-underline-offset: .3em; }
+.chapter-page a:focus-visible { outline-color: currentColor; }
+.chapter-page figure { margin: 0; }
+.chapter-page img { display: block; width: 100%; height: auto; }
+.chapter-page figcaption { margin-block-start: .65rem; font-size: .75rem; color: var(--chapter-muted); }
+.chapter-page .chapter-eyebrow { font: 600 .75rem/1.5 var(--font-utility); letter-spacing: .09em; text-transform: uppercase; }
+.chapter-page .chapter-link { display: inline-block; margin-block-start: 1.5rem; font-size: .875rem; }
+.chapter-intro { display: grid; gap: 2rem; align-items: end; margin-block: 2.5rem 3rem; }
+.chapter-intro > p, .chapter-intro > div { max-width: 38rem; }
+.chapter-page .chapter-note { font-size: .875rem; color: var(--chapter-muted); }
+.chapter-page .section-label:not(.section-label--inverse) { color: var(--chapter-muted); }
+.chapter-page .chapter-pullquote { margin-block-start: 3rem; max-width: 24ch; font: 400 clamp(2rem, 4vw, 3.75rem)/1.1 var(--font-display); }
+
+.chapter-page .chapter-hero { padding-block-start: 1.25rem; background: #f7f4ef; }
+.chapter-topline { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-block-end: 1.1rem; margin-block-end: 1.25rem; border-bottom: 1px solid var(--chapter-ink); }
+.chapter-page .chapter-brand { font: 600 1.3rem/1 var(--font-body); letter-spacing: .12em; }
+.chapter-topline a { max-width: 22ch; font-size: .75rem; text-align: right; }
+.chapter-hero-heading { display: grid; gap: 2.5rem; padding-block: 3.5rem 2.5rem; }
+.chapter-hero h1 { margin: 0; font-size: clamp(5.2rem, 14vw, 13rem); line-height: .8; letter-spacing: -.045em; }
+.chapter-hero h1 span { display: block; }
+.chapter-hero h1 span:last-child { margin-inline-start: .5em; }
+.chapter-hero-intro { max-width: 30rem; }
+.chapter-page .chapter-hero-subtitle { font: 400 clamp(2rem, 3.5vw, 3rem)/1.1 var(--font-display); margin-block: 1rem; }
+.chapter-hero-bottom { display: grid; gap: 2rem; align-items: end; }
+.chapter-page .chapter-question { max-width: 20ch; font: 400 clamp(1.9rem, 3.2vw, 3.1rem)/1.1 var(--font-display); }
+.chapter-hero-bottom img { aspect-ratio: 16 / 9; object-fit: cover; }
+
+.chapter-opportunity { background: var(--chapter-lilac); }
+.chapter-benefits { margin: 0; }
+.chapter-benefits > div { display: grid; gap: 1rem; padding-block: 1.5rem; border-top: 1px solid #ada2bd; }
+.chapter-benefits dt { display: flex; gap: 1rem; font: 400 2.4rem/1.1 var(--font-display); }
+.chapter-benefits dt span { padding-block-start: .4rem; font: 500 .75rem/1.4 var(--font-body); }
+.chapter-benefits dd { margin: 0; max-width: 42rem; }
+.chapter-page .chapter-example { font-size: .875rem; color: var(--chapter-muted); }
+.chapter-benefits .chapter-example { margin-block-start: .5rem; }
+.chapter-experience { background: #fbfaf7; }
+.chapter-columns { display: grid; gap: 2rem; padding: 0; margin: 0; list-style: none; }
+.chapter-columns li { border-top: 1px solid var(--color-border); padding-block-start: 1.5rem; }
+.chapter-columns h3 + p { margin-block-start: 1rem; }
+.chapter-open { display: grid; gap: 1.25rem; margin-block-start: 3rem; padding-block: 1.5rem; border-block: 1px solid var(--color-border); }
+.chapter-open ul { display: flex; flex-wrap: wrap; gap: .75rem 2rem; padding: 0; margin: 0; list-style: none; font-size: .875rem; }
+.chapter-page .chapter-culture { margin-block-start: 1.5rem; font-size: .875rem; color: var(--chapter-muted); }
+
+.chapter-journey { background: #eeeae2; }
+.chapter-stages { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
+.chapter-stages li { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; padding-block: 2rem; border-top: 1px solid #bdb6aa; }
+.chapter-stage-number { font: 400 2rem/1 var(--font-display); }
+.chapter-stages h3 { margin-block-end: 1rem; }
+.chapter-stages p { max-width: 42rem; }
+
+.chapter-references { background: #fbfaf7; }
+.chapter-reference-list { display: grid; gap: 2.5rem; }
+.chapter-reference-list article { padding-block-start: 1.5rem; border-top: 1px solid var(--chapter-ink); }
+.chapter-reference-list h3 { margin-block: 1.5rem; }
+.chapter-page .chapter-reference-value { color: var(--chapter-muted); }
+.chapter-references > .chapter-note { margin-block-start: 2rem; }
+
+.chapter-support { background: #f2eee8; }
+.chapter-roles { display: grid; gap: 1.5rem; margin-block: 0 3rem; }
+.chapter-roles > div { border-top: 1px solid var(--color-border); padding-block-start: 1.5rem; }
+.chapter-roles dt { font-weight: 600; margin-block-end: .75rem; }
+.chapter-roles dd { margin: 0; max-width: 36rem; }
+.chapter-case { display: grid; gap: 2rem; align-items: center; border-top: 1px solid var(--chapter-ink); padding-block-start: 2.5rem; }
+.chapter-case h3 { margin-block-end: 1rem; }
+
+.chapter-page .chapter-next { background: var(--chapter-ink); color: #f8f5ff; }
+.chapter-next h2 { max-width: 19ch; margin-block: 2.5rem 1.5rem; }
+.chapter-page .chapter-next-intro { max-width: 36rem; margin-block-end: 3rem; }
+.chapter-next .chapter-columns { margin-block-start: 1rem; }
+.chapter-next .chapter-columns li { border-color: #6d667b; }
+.chapter-next .chapter-columns h3 { margin-block-start: 1rem; }
+.chapter-next .chapter-columns p { color: #ddd6e7; }
+.chapter-next footer { border-top: 1px solid #6d667b; margin-block-start: 3rem; padding-block-start: 1.5rem; font-size: .75rem; }
+
+@media (min-width: 48rem) {
+  .chapter-intro { grid-template-columns: 1.15fr 1fr; gap: 3rem; margin-block: 3rem 4rem; }
+  .chapter-hero-heading { grid-template-columns: 1.4fr 1fr; align-items: end; gap: 3rem; padding-block: 4rem 3rem; }
+  .chapter-hero-intro { padding-block-end: .5rem; }
+  .chapter-hero-bottom { grid-template-columns: .65fr 1fr; gap: 3rem; }
+  .chapter-question { padding-block-end: 2rem; }
+  .chapter-benefits > div { grid-template-columns: 1fr 1.4fr; gap: 3rem; padding-block: 2rem; }
+  .chapter-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .chapter-reference-list, .chapter-roles, .chapter-case { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; }
+  .chapter-open { grid-template-columns: 1fr 2fr; align-items: baseline; }
+  .chapter-stages li { grid-template-columns: 1fr 2fr; padding-block: 2.5rem; }
+  .chapter-stage-number { font-size: 4.5rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chapter-page .chapter-link { transition: text-underline-offset 180ms; }
+  .chapter-page .chapter-link:hover { text-underline-offset: .5em; }
+}

@@ -1,66 +1,35 @@
 ---
-import { nuevaBenchmarks, nuevaGesCase, nuevaProposal, nuevaUi } from "@/data/skinko/nueva";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { chapterProposal } from "@/data/skinko/chapterProposal";
+import { nuevaProposal, nuevaUi } from "@/data/skinko/nueva";
 import { nuevaMetadata } from "@/seo/metadata";
 import { buildWebPageSchema } from "@/seo/schemas";
-import ArtOfSkin from "@/sections/ArtOfSkin.astro";
-import BandadasValue from "@/sections/BandadasValue.astro";
-import Benchmarks from "@/sections/Benchmarks.astro";
-import FinalCta from "@/sections/FinalCta.astro";
-import GesCaseStudy from "@/sections/GesCaseStudy.astro";
-import Hero from "@/sections/Hero.astro";
+import ChapterHero from "@/sections/ChapterHero.astro";
+import BrandOpportunity from "@/sections/BrandOpportunity.astro";
+import FirstExperience from "@/sections/FirstExperience.astro";
+import CreativeJourney from "@/sections/CreativeJourney.astro";
+import CulturalReferences from "@/sections/CulturalReferences.astro";
+import ChapterSupport from "@/sections/ChapterSupport.astro";
+import ChapterNextSteps from "@/sections/ChapterNextSteps.astro";
 import HiddenSystem from "@/sections/HiddenSystem.astro";
-import Journey from "@/sections/Journey.astro";
-import Opportunity from "@/sections/Opportunity.astro";
-import PremioConcept from "@/sections/PremioConcept.astro";
-import Roadmap from "@/sections/Roadmap.astro";
-import WhySiteSpecific from "@/sections/WhySiteSpecific.astro";
+import "@/styles/chapter.css";
 
-const canonical = new URL(nuevaMetadata.canonicalPath, Astro.site ?? Astro.url.origin);
 const schema = buildWebPageSchema({
   name: nuevaMetadata.title,
   description: nuevaMetadata.description,
-  url: canonical.href,
+  url: new URL(nuevaMetadata.canonicalPath, Astro.site ?? Astro.url.origin).href,
 });
 ---
 
-<BaseLayout metadata={nuevaMetadata} schema={schema}>
-  <main id="content" class="mx-auto max-w-content">
-    <Hero
-      territory={nuevaProposal.brandTerritory.data}
-      prize={nuevaProposal.prize.data}
-      copy={nuevaUi.hero}
-    />
-    <ArtOfSkin experiences={nuevaProposal.artExperiences.data} copy={nuevaUi.artOfSkin} />
-    <Opportunity
-      status={nuevaProposal.opportunity.status}
-      opportunity={nuevaProposal.opportunity.data}
-      copy={nuevaUi.opportunity}
-    />
-    <PremioConcept
-      status={nuevaProposal.prize.status}
-      concept={nuevaProposal.prize.data}
-      copy={nuevaUi.prize}
-    />
-    <WhySiteSpecific content={nuevaProposal.siteSpecific.data} copy={nuevaUi.siteSpecific} />
-    <Journey
-      status={nuevaProposal.journey.status}
-      phases={nuevaProposal.journey.data}
-      copy={nuevaUi.journey}
-    />
-    <Benchmarks benchmarks={nuevaBenchmarks} copy={nuevaUi.benchmarks} />
-    <HiddenSystem system={nuevaProposal.hiddenSystem.data} copy={nuevaUi.hiddenSystem} />
-    <GesCaseStudy
-      content={nuevaGesCase.data}
-      status={nuevaGesCase.status}
-      copy={nuevaUi.ges}
-    />
-    <BandadasValue value={nuevaProposal.bandadasValue.data} copy={nuevaUi.bandadas} />
-    <Roadmap
-      status={nuevaProposal.roadmap.status}
-      milestones={nuevaProposal.roadmap.data}
-      copy={nuevaUi.roadmap}
-    />
-    <FinalCta closing={nuevaProposal.closing.data} copy={nuevaUi.closing} />
+<BaseLayout metadata={nuevaMetadata} {schema}>
+  <main id="content" class="chapter-page">
+    <ChapterHero content={chapterProposal.hero} navigation={chapterProposal.navigation} />
+    <BrandOpportunity content={chapterProposal.opportunity} />
+    <FirstExperience content={chapterProposal.experience} />
+    <CreativeJourney content={chapterProposal.journey} />
+    <CulturalReferences content={chapterProposal.references} />
+    <ChapterSupport content={chapterProposal.support} />
+    <HiddenSystem system={nuevaProposal.hiddenSystem.data} copy={nuevaUi.hiddenSystem} index="06" tone="violet" />
+    <ChapterNextSteps content={chapterProposal.nextSteps} />
   </main>
 </BaseLayout>
